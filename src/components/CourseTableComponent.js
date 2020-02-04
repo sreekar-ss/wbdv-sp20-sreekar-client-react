@@ -1,17 +1,18 @@
 import React from "react";
+import CourseTableRow from "./CourseTableRow";
 
 
-const CourseTableComponent = ({courses, deleteCourse}) =>
+const CourseTableComponent = ({courses, deleteCourse, showCourseEditor}) =>
     <div>
     <h2>Course Table Component {courses.length}</h2>
         <ul>
             {
                 courses.map(function (course,index) {
-                    return (
-                        <li key={index}>
-                            {course.title}
-                            <button onClick={() => deleteCourse(course)}>Delete</button>
-                        </li>)
+                    return <CourseTableRow
+                            showCourseEditor={showCourseEditor}
+                            deleteCourse ={deleteCourse}
+                            key = {course._id}
+                            course={course}/>
                 })
             }
         </ul>
