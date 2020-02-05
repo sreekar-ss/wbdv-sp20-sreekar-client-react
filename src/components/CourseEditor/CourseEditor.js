@@ -1,32 +1,42 @@
 import React from "react";
 import ModuleList from "./ModuleList";
+import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../../../node_modules/font-awesome/css/font-awesome.css';
+import CourseEditorHeader from "./CourseEditorHeader";
+import LessonList from "./LessonList";
+
+
 
 const CourseEditor = ({hideCourseEditor}) =>
     <div>
         <button onClick={hideCourseEditor}>Close</button>
-        <h2>Course Editor</h2>
-        <div className="row">
-            <div className= "col-4">
-                <h4>Module List</h4>
-                <ModuleList modules ={[
-                    {_id: "123", title: "CSS" },
-                    {_id: "122", title: "HTML" },
-                    {_id: "124", title: "BOOTSTRAP" },
-                    {_id: "125", title: "REACT" },
+        <CourseEditorHeader hideCourseEditor={hideCourseEditor}/>
+
+        <div className="container-fluid" style={{paddingTop: "2cm"}}>
+            <div className="row">
+                <div className= "col-4 bg-light flex-column nav-pills">
+
+
+                        <ModuleList modules ={[
+                            {_id: "123", title: "CSS" },
+                            {_id: "122", title: "HTML" },
+                            {_id: "124", title: "BOOTSTRAP" },
+                            {_id: "125", title: "REACT" },
+                            ]}/>
+
+                </div>
+                <div className= "col-8">
+
+                    <LessonList lessons={[
+                        {_id: "221", name:"Lesson 1"},
+                        {_id: "222", name:"Lesson 2"},
+                        {_id: "223", name:"Lesson 3"},
+                        {_id: "224", name:"Lesson 4"},
                     ]}/>
-            </div>
-            <div className= "col-8">
-                <h4>Lesson List</h4>
-                <ul>
-                    <li>Lesson 1</li>
-                    <li>Lesson 2</li>
-                    <li>Lesson 3</li>
-                </ul>
+                </div>
             </div>
         </div>
-            <ul>
 
-            </ul>
     </div>
 
 

@@ -1,11 +1,12 @@
 import React from "react";
 import CourseGridRow from "./CourseGridRow";
+import CourseGridHeader from "./CourseGridHeader";
 
 
 
 const CourseGridComponent = ({toggle, courses, deleteCourse, showCourseEditor}) =>
     <div>
-    <h2>Course Grid Component</h2>
+    <CourseGridHeader toggle = {toggle}/>
         <div>
             <div className="card-deck">
                 {
