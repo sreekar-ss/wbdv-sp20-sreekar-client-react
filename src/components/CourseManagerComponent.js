@@ -9,9 +9,8 @@ class CourseManagerComponent extends React.Component{
         layout: 'table',
         editingCourse: false,
         newCourseTitle: 'Add Course Title',
-        courses: [
+        courses: []
 
-        ]
     }
 
     componentDidMount = async () => {
@@ -118,7 +117,11 @@ class CourseManagerComponent extends React.Component{
                             showCourseEditor = {this.showCourseEditor}
                             deleteCourse={this.deleteCourse}
                             courses={this.state.courses}/>}
-                        {this.state.layout === 'grid' && <CourseGridComponent courses={this.state.courses}/>}
+                        {this.state.layout === 'grid' && <CourseGridComponent
+                            toggle={this.toggle}
+                            showCourseEditor = {this.showCourseEditor}
+                            deleteCourse={this.deleteCourse}
+                            courses={this.state.courses}/>}
                     </div>
                 }
             </div>

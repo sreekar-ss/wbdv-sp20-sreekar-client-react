@@ -3,7 +3,7 @@ import {updateCourse} from "../services/CourseService";
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../node_modules/font-awesome/css/font-awesome.css';
 
-class CourseTableRow extends React.Component{
+class CourseTableRow extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -11,6 +11,7 @@ class CourseTableRow extends React.Component{
     state = {
         editing: false,
         course: this.props.course,
+        date: (new Date()).toLocaleDateString()
     }
     render() {
         return (
@@ -30,7 +31,7 @@ class CourseTableRow extends React.Component{
                             <span className="d-none d-lg-block">me</span>
                         </div>
                         <div className="col" onClick={this.props.showCourseEditor}>
-                            <span className="d-none d-lg-block">02/04/2021</span>
+                            <span className="d-none d-lg-block">{this.state.date}</span>
                         </div>
                         <div className="col">
                             <button type="button" style={{border:"none"}} onClick={() => this.setState({editing: true})}>
@@ -75,7 +76,7 @@ class CourseTableRow extends React.Component{
 
                         <div className="col">
 
-                            <button type="button" style={{border:"none"}} onClick={ (e) =>{
+                            <button className="btn-primary" type="button" style={{border:"none",background:"none"}} onClick={ (e) =>{
                                 updateCourse(this.state.course._id, this.state.course).then (status =>
                                     this.setState({
                                         editing: false,
