@@ -8,7 +8,7 @@ class CourseManagerComponent extends React.Component{
     state = {
         layout: 'table',
         editingCourse: false,
-        newCourseTitle: 'Add New Course Title Here',
+        newCourseTitle: 'Add Course Title',
         courses: [
 
         ]
@@ -100,7 +100,6 @@ class CourseManagerComponent extends React.Component{
     render() {
         return (
             <div>
-                <h1>Course Manager</h1>
                 {
                     this.state.editingCourse
 
@@ -115,6 +114,7 @@ class CourseManagerComponent extends React.Component{
                         />
 
                         {this.state.layout === 'table' && <CourseTableComponent
+                            toggle={this.toggle}
                             showCourseEditor = {this.showCourseEditor}
                             deleteCourse={this.deleteCourse}
                             courses={this.state.courses}/>}

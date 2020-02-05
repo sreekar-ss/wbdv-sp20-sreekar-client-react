@@ -1,23 +1,25 @@
 import React from "react";
 import CourseTableRow from "./CourseTableRow";
+import CourseTableHeader from "./CourseTableHeader";
 
 
-const CourseTableComponent = ({courses, deleteCourse, showCourseEditor}) =>
+const CourseTableComponent = ({toggle, courses, deleteCourse, showCourseEditor}) =>
     <div>
-    <h2>Course Table Component {courses.length}</h2>
-        <ul>
-            {
-                courses.map(function (course,index) {
-                    return <CourseTableRow
-                            showCourseEditor={showCourseEditor}
-                            deleteCourse ={deleteCourse}
-                            key = {course._id}
-                            course={course}/>
-                })
-            }
-        </ul>
+        <CourseTableHeader toggle = {toggle}/>
+        <div className="container">
+            <ul>
+                {
+                    courses.map(function (course,index) {
+                        return <CourseTableRow
+                                showCourseEditor={showCourseEditor}
+                                deleteCourse ={deleteCourse}
+                                key = {course._id}
+                                course={course}/>
+                    })
+                }
+            </ul>
 
+        </div>
     </div>
-
 
 export default CourseTableComponent
