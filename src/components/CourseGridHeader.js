@@ -25,16 +25,13 @@ const CourseGridHeader = ({toggle}) =>
                             Owned by
                         </a>
                     </div>
-                    <div className="col">
-                        <h6 style={{whiteSpace:"nowrap"}} className="navbar-text wbdv-header wbdv-last-modified d-none d-lg-block">Last Opened</h6>
-                    </div>
-                    <div className="col">
+
+                    <div className="col" style={{marginLeft: "220px"}}>
                         <a type="button" style={{border:"none"}} onClick={toggle} className="wbdv-button wbdv-grid-layout d-block" href="#">
                             <i className="fa fa-list"></i>
                         </a>
                     </div>
                     <div className="col">
-
                         <a className="wbdv-header wbdv-sort col-lg-1 d-none d-lg-block" href="#">
                             <i className="fa fa-sort-alpha-asc"></i>
                         </a>

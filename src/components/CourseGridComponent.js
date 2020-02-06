@@ -8,7 +8,7 @@ const CourseGridComponent = ({toggle, courses, deleteCourse, showCourseEditor}) 
     <div>
     <CourseGridHeader toggle = {toggle}/>
         <div>
-            <div className="card-deck">
+            <div className="card-deck" style={{padding:"1cm", marginLeft:"1cm"}}>
                 {
                     courses.map(function (course,index) {
                         return <CourseGridRow

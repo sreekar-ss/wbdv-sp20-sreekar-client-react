@@ -1,10 +1,10 @@
 import React from "react";
 import CourseTableComponent from "./CourseTableComponent";
-import CourseGridComponent from "./CourseGridComponenet";
+import CourseGridComponent from "./CourseGridComponent";
 import CourseEditor from "./CourseEditor/CourseEditor";
 import CourseManagerHeading from "./CourseManagerHeading";
 import {createCourse, findAllCourses, deleteCourse} from "../services/CourseService"
-class CourseManagerComponent extends React.Component{
+class CourseManagerContainer extends React.Component{
     state = {
         layout: 'table',
         editingCourse: false,
@@ -131,4 +131,4 @@ class CourseManagerComponent extends React.Component{
 }
 
 
-export default CourseManagerComponent
+export default CourseManagerContainer

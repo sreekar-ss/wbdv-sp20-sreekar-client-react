@@ -10,13 +10,13 @@ const CourseTableHeader = ({toggle}) =>
                         <h5 className="wbdv-last-modified">Today</h5>
                     </span>
 
-            <span className="navbar-text col-sm offset-sm-7 wbdv-header wbdv-title d-none d-lg-block">
+            <span className="navbar-text col-sm offset-sm-6 wbdv-header wbdv-title d-none d-lg-block" style={{marginLeft:"350px"}}>
                        <h5 className="wbdv-header wbdv-title">Title</h5>
                     </span>
 
         </div>
 
-        <div className="col" style={{whitespace: "nowrap"}}>
+        <div className="col">
 
             <div className="container">
                 <div className="row align-items-center">
@@ -27,11 +27,11 @@ const CourseTableHeader = ({toggle}) =>
                             Owned by
                         </a>
                     </div>
-                    <div className="col">
+                    <div className="col" style={{marginLeft: "60px"}}>
                         <h6 style={{whiteSpace:"nowrap"}} className="navbar-text wbdv-header wbdv-last-modified d-none d-lg-block">Last Opened</h6>
                     </div>
-                    <div className="col">
-                        <a type="button" style={{border:"none"}} onClick={toggle} className="wbdv-button wbdv-grid-layout d-none d-lg-block" href="#">
+                    <div className="col" style={{marginLeft: "40px"}}>
+                        <a type="button" style={{border:"none"}} onClick={toggle} className="wbdv-button wbdv-grid-layout d-block d-lg-block" href="#">
                             <i className="fa fa-th"></i>
                         </a>
                     </div>

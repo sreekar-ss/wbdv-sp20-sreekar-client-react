@@ -15,7 +15,7 @@ const CourseManagerHeading = ({toggle, updateForm, addCourse, newCourseTitle}) =
                placeholder={newCourseTitle}/>
 
 
-        <button className="btn col-md-1 col-3" onClick={addCourse}>
+        <button className="btn col-md-3 col-3" onClick={addCourse}>
             <i className="fa fa-plus-circle fa-3x" style={{float: "left", color: "red"}}></i>
         </button>
 

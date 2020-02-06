@@ -17,7 +17,7 @@ class CourseTableRow extends React.Component {
         return (
 
 
-            <div>
+            <div style={{whiteSpace:"nowrap"}}>
                 { !this.state.editing &&
                 <button className="list-group-item list-group-item-action shadow p-3  bg-white rounded" href ="#">
                     <div className="row container" style={{whiteSpace:"nowrap"}}>
@@ -34,7 +34,10 @@ class CourseTableRow extends React.Component {
                             <span className="d-none d-lg-block">{this.state.date}</span>
                         </div>
                         <div className="col">
-                            <button type="button" style={{border:"none"}} onClick={() => this.setState({editing: true})}>
+                            <button type="button" style={{border:"none"}} onClick={() => this.setState({
+                                editing: true,
+                                date: (new Date()).toLocaleTimeString()
+                            })}>
                                 <i className="fa fa-pencil"></i>
                             </button>
 
@@ -71,7 +74,7 @@ class CourseTableRow extends React.Component {
                             <span className="d-none d-lg-block">me</span>
                         </div>
                         <div className="col" onClick={this.props.showCourseEditor}>
-                            <span className="d-none d-lg-block">02/04/2021</span>
+                            <span className="d-none d-lg-block">{this.state.date}</span>
                         </div>
 
                         <div className="col">

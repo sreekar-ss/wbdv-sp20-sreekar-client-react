@@ -32,8 +32,14 @@ class CourseGridRow extends React.Component {
                                     <small className="text-muted"> Modified: {this.state.date}</small>
                                 </p>
                             </div>
+
+                            {/*Updates the time according to the last edited time*/}
+
                             <div className="card-footer">
-                                <button className="btn-primary rounded" type="button" style={{border:"none"}} onClick={() => this.setState({editing: true})}>
+                                <button className="btn-primary rounded" type="button" style={{border:"none"}} onClick={() => this.setState({
+                                    editing: true,
+                                    date: (new Date()).toLocaleTimeString()
+                                })}>
                                     <i className="fa fa-pencil fa-2x"></i>
                                 </button>
 
@@ -61,10 +67,10 @@ class CourseGridRow extends React.Component {
                                        value={this.state.course.title}/>
                                 <p className="card-text">
                                     <i className="fa fa-book"></i>
-                                    <small className="text-muted"> Modified: 02/04/2020</small>
+                                    <small className="text-muted"> Modified: {this.state.date}</small>
                                 </p>
                                 <div className="card-footer">
-                                    <button className="btn-primary" type="button" style={{border:"none"}} onClick={ (e) =>{
+                                    <button className="btn-primary rounded" type="button" style={{border:"none"}} onClick={ (e) =>{
                                         updateCourse(this.state.course._id, this.state.course).then (status =>
                                             this.setState({
                                                 editing: false,
