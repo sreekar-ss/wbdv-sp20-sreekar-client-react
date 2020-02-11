@@ -2,6 +2,7 @@ import React from "react";
 import {updateCourse} from "../services/CourseService";
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../node_modules/font-awesome/css/font-awesome.css';
+import {Link} from "react-router-dom";
 
 class CourseTableRow extends React.Component {
     constructor(props) {
@@ -11,7 +12,8 @@ class CourseTableRow extends React.Component {
     state = {
         editing: false,
         course: this.props.course,
-        date: (new Date()).toLocaleDateString()
+        date: (new Date()).toLocaleDateString(),
+
     }
     render() {
         return (
@@ -21,18 +23,35 @@ class CourseTableRow extends React.Component {
                 { !this.state.editing &&
                 <button className="list-group-item list-group-item-action shadow p-3  bg-white rounded" href ="#">
                     <div className="row container" style={{whiteSpace:"nowrap"}}>
-                        <div className="col" onClick={this.props.showCourseEditor}>
-                            <i className="fa fa-book"></i>
+
+
+                        <div className="col">
+                            <Link to={`/course-editor/${this.state.course._id}`}>
+                                <i className="fa fa-book"></i>
+                            </Link>
                         </div>
-                        <div className="col col-sm-4" onClick={this.props.showCourseEditor}>
-                            <span className="col">{this.state.course.title}</span>
+
+
+                        <div className="col col-sm-4" >
+                            <Link to={`/course-editor/${this.state.course._id}`}>
+                                <span className="col">{this.state.course.title}</span>
+                            </Link>
                         </div>
-                        <div className="col offset-sm-1" onClick={this.props.showCourseEditor}>
-                            <span className="d-none d-lg-block">me</span>
+
+
+                        <div className="col offset-sm-1">
+                            <Link to={`/course-editor/${this.state.course._id}`}>
+                                    <span className="d-none d-lg-block">me</span>
+                                </Link>
                         </div>
-                        <div className="col" onClick={this.props.showCourseEditor}>
-                            <span className="d-none d-lg-block">{this.state.date}</span>
+
+
+                        <div className="col">
+                            <Link to={`/course-editor/${this.state.course._id}`}>
+                                <span className="d-none d-lg-block">{this.state.date}</span>
+                            </Link>
                         </div>
+
                         <div className="col">
                             <button type="button" style={{border:"none"}} onClick={() => this.setState({
                                 editing: true,

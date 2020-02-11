@@ -7,10 +7,10 @@ import LessonList from "./LessonList";
 
 
 
-const CourseEditor = ({hideCourseEditor}) =>
+const CourseEditor = ({hideCourseEditor, match, history, courseId}) =>
     <div>
         <button onClick={hideCourseEditor}>Close</button>
-        <CourseEditorHeader hideCourseEditor={hideCourseEditor}/>
+        <CourseEditorHeader hideCourseEditor={hideCourseEditor} match={match} courseId={courseId} history={history}/>
 
         <div className="container-fluid" style={{paddingTop: "2cm"}}>
             <div className="row">
