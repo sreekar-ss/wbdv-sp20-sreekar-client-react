@@ -2,7 +2,8 @@ import React from "react";
 import LessonListItem from "./LessonListItem";
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
-
+import {connect} from "react-redux";
+import {createLesson, deleteLesson, FIND_ALL_LESSONS} from "./LessonActions";
 
 
 const LessonList = ({lessons}) =>

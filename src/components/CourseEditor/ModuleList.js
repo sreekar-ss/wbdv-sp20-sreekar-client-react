@@ -4,7 +4,7 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 import {connect} from "react-redux";
 import {createModule, deleteModule, FIND_ALL_MODULES} from "../ModuleActions";
-import ModuleService from "../../services/ModuleService";
+import ModuleService, {updateModule} from "../../services/ModuleService";
 
 
 class ModuleList extends React.Component  {
@@ -23,9 +23,9 @@ class ModuleList extends React.Component  {
                                       key = {module._id}
                                       module={module}
                                       deleteModule={this.props.deleteModule}
+                                      updateModule={this.props.updateModule}
                                   />
                               )
-
                          }
                     </ul>
                     <a className="wbdv-module-item-add-btn" href="#" style={{float:"right"}} onClick={() => this.props.createModule(this.props.courseId)}>
@@ -65,7 +65,13 @@ const dispatchToPropertyManager = (dispatch) => {
                 title: 'New Module'
             }).then(actualModule =>
                 dispatch(createModule(actualModule)))
-        }
+        },
+
+        updateModule: (moduleId, module) => {
+            ModuleService.updateModule(moduleId, module)
+                .then(updatedModule =>
+                dispatch(updateModule(updatedModule)))
+        },
     }
 }
 

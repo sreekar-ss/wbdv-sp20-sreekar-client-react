@@ -1,18 +1,58 @@
 import React from "react";
+import ModuleItem from "./ModuleItem";
+import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+import ModuleItemEdit from "./ModuleItemEdit";
+class ModuleListItem extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    state= {
+        editing: false,
+        module: this.props.module,
+    }
+
+     editModule = (e) => {
+        this.setState({
+            module: {
+                ...this.state.module,
+                title: e.target.value
+            }
+        })
+    }
+render() {
+    return(
+
+        <Router>
+            <Route path="/course-editor/:courseId"
+                exact={true}
+                render = { (props) =>
+                <ModuleItem
+
+                    //title={this.state.module.title}
+                    module={this.state.module}
+                    deleteModule={this.props.deleteModule}
+                    courseId={props.match.params.courseId}
+                />
+            }/>
 
 
-const ModuleListItem = ({module, deleteModule}) =>
-    <a href="#" className="list-group-item list-group-item-action active shadow p-3 mb-3 rounded wbdv-module-item">
-            <div className="row">
-                    <div className="col">
-                            <h5 style={{color:"azure"}}>{module.title}</h5>
-                    </div>
-                    <div className="col">
-                            <button type="button" className="close wbdv-module-item-delete-btn" onClick={ () => deleteModule(module._id)}>
-                                    <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
-            </div>
-    </a>
+            <Route path="/course-editor/:courseId/module/:moduleId"
+                   //exact={true}
+                   render={ (props) =>
+                   <ModuleItemEdit
+                       {...props}
+                       courseId = {props.match.params.courseId}
+                       module = {this.state.module}
+                       updateModule = {this.props.updateModule}
+                       state = {this.state}
+                       editModule = {this.editModule}
+                   />
+                   }/>
+        </Router>
 
+
+    )
+}
+}
 export default ModuleListItem

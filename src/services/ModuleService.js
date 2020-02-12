@@ -1,5 +1,4 @@
-
-
+import {API_URL} from "../components/common/constants";
 
 
 export const createModule = (courseId, module) =>
@@ -26,10 +25,21 @@ export const deleteModule = (moduleId) =>
         method : "DELETE"
     }).then(response => response.json())
 
+export const updateModule = (moduleId, module) =>
+{
+    fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/modules/${moduleId}`, {
+        method: 'PUT',
+        body: JSON.stringify(module),
+        headers: {
+            'content-type' : 'application/json'
+        }
+    }).then(response => response.json())
+}
 
 export default {
     findAllModules,
     deleteModule,
     findModulesForCourse,
-    createModule
+    createModule,
+    updateModule
 }
