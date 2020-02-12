@@ -2,15 +2,26 @@ import React from "react";
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 import {Link} from "react-router-dom";
+import {findCourseById} from "../../services/CourseService";
 
-const CourseEditorHeader = ({hideCourseEditor, match, history, courseId}) =>
+
+
+const CourseEditorHeader = ({hideCourseEditor, match, history, courseId} )=>
+
+     // const course = await findCourseById(courseId);
+     // console.log("courdse===> ", course);
+
     <nav className="navbar navbar-expand-lg navbar-light bg-dark fixed-top shadow">
 
-        <button type="button col" className="close wbdv-course-editor wbdv-close" onClick={ () => {history.push("/")}}>
+        <button type="button col" className="close wbdv-course-editor wbdv-close" onClick={() => {
+            history.push("/")
+        }}>
             <span aria-hidden="true">&times;</span>
         </button>
 
+
         <a className="navbar-brand col-sm col" href="#">
+
             <h3 className="wbdv-course-title">CS5610 WebDev {courseId}</h3>
         </a>
 
@@ -34,6 +45,7 @@ const CourseEditorHeader = ({hideCourseEditor, match, history, courseId}) =>
             </a>
         </div>
     </nav>
+
 
 
 export default CourseEditorHeader

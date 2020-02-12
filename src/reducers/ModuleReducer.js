@@ -1,27 +1,39 @@
+import {CREATE_MODULE, DELETE_MODULE, FIND_ALL_MODULES} from "../components/ModuleActions";
+
 const initialState = {
     stateVariable1: {},
 
-    modules: [
-        {_id: "123", title: "CSS" },
-        {_id: "122", title: "HTML" },
-        {_id: "124", title: "BOOTSTRAP" },
-        {_id: "125", title: "REACT" },
-        {_id: "126", title: "REDUX" },
-    ]
+    modules: [ ]
 }
 
 const moduleReducer = (state = initialState, action) => {
 
-    if(action.type === "CREATE_MODULE"){
-        return {
-            modules: [
-                ...state.modules,
-                action.newModule
-            ]
-        }
+    switch (action.type) {
+
+
+        case FIND_ALL_MODULES:
+            return {
+                modules: action.modules
+            }
+
+        case CREATE_MODULE:
+            return {
+                modules: [
+                    ...state.modules,
+                    action.newModule
+                ]
+            }
+
+        case DELETE_MODULE:
+            return {
+                modules: state.modules.filter(module => module._id !== action.moduleId)
+            }
+
+        default:
+            return state
+
     }
 
-    return state
 }
 
 

@@ -4,8 +4,6 @@ import CourseGridComponent from "./CourseGridComponent";
 import CourseEditor from "./CourseEditor/CourseEditor";
 import CourseManagerHeading from "./CourseManagerHeading";
 import {createCourse, findAllCourses, deleteCourse} from "../services/CourseService"
-import Page1 from "./Page1";
-import Page2 from "./Page2";
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import CourseListComponent from "./CourseListComponent";
 
@@ -15,7 +13,6 @@ class CourseManagerContainer extends React.Component{
         editingCourse: false,
         newCourseTitle: 'Add Course Title',
         courses: []
-
     }
 
     componentDidMount = async () => {
@@ -104,19 +101,6 @@ class CourseManagerContainer extends React.Component{
     render() {
         return (
             <div>
-                {/*<Router>*/}
-
-                {/*    <Link to="/page1">*/}
-                {/*        Page 1*/}
-                {/*    </Link>*/}
-                {/*    <Link to="/page2/">*/}
-                {/*        Page 2*/}
-                {/*    </Link>*/}
-                {/*    <Route path="/page1" component={Page1}/>*/}
-                {/*    <Route path="/page2/:message"*/}
-                {/*           exact={true}*/}
-                {/*           component={Page2}/>*/}
-                {/*</Router>*/}
 
                 <Router>
 
