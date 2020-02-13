@@ -10,7 +10,9 @@ const ModuleItem = ({module, deleteModule, courseId}) =>
         <a href="#" className="list-group-item list-group-item-action shadow p-3 mb-3 rounded wbdv-module-item">
             <div className="row">
                 <div className="col-8">
-                    <h5 style={{color: "black"}}>{module.title}</h5>
+                    <Link to={`course-editor/${courseId}/module/${module._id}/lesson`}>
+                        <h5 style={{color: "black"}}>{module.title}</h5>
+                    </Link>
                 </div>
 
                 <div className="col-2">

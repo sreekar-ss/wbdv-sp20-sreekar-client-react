@@ -79,7 +79,7 @@ class LessonList extends React.Component {
 
                 </div>
             </div>
-            <a href="#">
+            <a href="#" onClick={() => this.props.createLesson(this.props.courseId, this.props.moduleId)}>
                 <i className="fa fa-plus-square fa-2x"
                    style={{float: "right", marginRight: "10px", color: "crimson", marginTop: "5px"}}></i>
             </a>
