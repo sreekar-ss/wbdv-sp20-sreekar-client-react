@@ -13,5 +13,11 @@ export const deleteLesson = (lessonId) => ({
     moduleId: lessonId
 })
 
+export const UPDATE_LESSON = "UPDATE_LESSON"
+export const updateLesson = (updatedLesson) => ({
+    type: UPDATE_LESSON,
+    updatedModule: updatedLesson
+})
+
 
 export const FIND_ALL_LESSONS = "FIND_ALL_LESSONS"

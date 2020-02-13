@@ -8,6 +8,7 @@ import {createStore} from "redux";
 import {Provider} from 'react-redux'
 import moduleReducer from "../../reducers/ModuleReducer";
 import {findCourseById} from "../../services/CourseService";
+import lessonReducer from "../../reducers/LessonReducer";
 
 
 const store = createStore(moduleReducer)

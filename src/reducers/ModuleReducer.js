@@ -1,4 +1,4 @@
-import {CREATE_MODULE, DELETE_MODULE, FIND_ALL_MODULES} from "../components/ModuleActions";
+import {CREATE_MODULE, DELETE_MODULE, FIND_ALL_MODULES, UPDATE_MODULE} from "../components/ModuleActions";
 
 const initialState = {
     stateVariable1: {},
@@ -29,6 +29,13 @@ const moduleReducer = (state = initialState, action) => {
                 modules: state.modules.filter(module => module._id !== action.moduleId)
             }
 
+        case UPDATE_MODULE:
+            return {
+                modules: [
+                    state.modules.filter(module => module._id !== action.moduleId),
+                    action.updatedModule
+                    ]
+            }
         default:
             return state
 

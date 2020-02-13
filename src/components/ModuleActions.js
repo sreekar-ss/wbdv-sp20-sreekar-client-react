@@ -13,5 +13,10 @@ export const deleteModule = (moduleId) => ({
     moduleId: moduleId
 })
 
+export const UPDATE_MODULE = "UPDATE_MODULE"
+export const updateModule = (updatedModule) => ({
+    type: UPDATE_MODULE,
+    updatedModule : updatedModule
+})
 
 export const FIND_ALL_MODULES = "FIND_ALL_MODULES"

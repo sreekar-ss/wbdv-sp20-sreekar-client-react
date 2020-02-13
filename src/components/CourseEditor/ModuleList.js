@@ -3,8 +3,8 @@ import ModuleListItem from "./ModuleListItem";
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 import {connect} from "react-redux";
-import {createModule, deleteModule, FIND_ALL_MODULES} from "../ModuleActions";
-import ModuleService, {updateModule} from "../../services/ModuleService";
+import {createModule, deleteModule, updateModule, FIND_ALL_MODULES} from "../ModuleActions";
+import ModuleService from "../../services/ModuleService";
 
 
 class ModuleList extends React.Component  {
@@ -31,6 +31,8 @@ class ModuleList extends React.Component  {
                     <a className="wbdv-module-item-add-btn" href="#" style={{float:"right"}} onClick={() => this.props.createModule(this.props.courseId)}>
                          <i className="fa fa-plus fa-2x wbdv-module-item-add-btn"></i>
                     </a>
+
+
                </div>
           )
      }
