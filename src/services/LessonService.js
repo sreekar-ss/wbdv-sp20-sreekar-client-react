@@ -1,9 +1,9 @@
 import {createModule, deleteModule, findAllModules, findModulesForCourse, updateModule} from "./ModuleService";
 
 
-export const createLesson = (courseId, moduleId, lesson) =>
+export const createLesson = (moduleId, lesson) =>
 
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/courses/${courseId}/modules/${moduleId}/lessons`, {
+    fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/modules/${moduleId}/lessons`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -13,8 +13,8 @@ export const createLesson = (courseId, moduleId, lesson) =>
         .then(response => response.json())
 
 
-export const findLessonsForModule = (courseId, moduleId) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/courses/${courseId}/modules/${moduleId}/lessons`)
+export const findLessonsForModule = (moduleId) =>
+    fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/modules/${moduleId}/lessons`)
         .then(response => response.json())
 
 export const findAllLessons = () =>

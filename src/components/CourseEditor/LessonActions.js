@@ -2,7 +2,7 @@ export const CREATE_LESSON = "CREATE_LESSON"
 
 export const createLesson = (newLesson) => ({
     type: CREATE_LESSON,
-    newModule: newLesson
+    newLesson: newLesson
 })
 
 

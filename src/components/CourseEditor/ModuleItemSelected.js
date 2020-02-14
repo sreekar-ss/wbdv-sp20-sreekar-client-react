@@ -3,14 +3,14 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 
-const ModuleItem = ({module, deleteModule, courseId}) =>
+const ModuleItemSelected = ({module, deleteModule, courseId}) =>
 {
     console.log("==> ", deleteModule);
     return(
-        <a href="#" className="list-group-item list-group-item-action shadow p-3 mb-3 rounded wbdv-module-item">
+        <a href="#" className="list-group-item list-group-item-action active shadow p-3 mb-3 rounded wbdv-module-item">
             <div className="row">
                 <div className="col-8">
-                    <Link to={`/course-editor/${courseId}/module/${module._id}`}>
+                    <Link to={`/course-editor/${courseId}/module/${module._id}/lesson`}>
                         <h5 style={{color: "black"}}>{module.title}</h5>
                     </Link>
                 </div>
@@ -34,4 +34,4 @@ const ModuleItem = ({module, deleteModule, courseId}) =>
 }
 
 
-export default ModuleItem
+export default ModuleItemSelected

@@ -1,6 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
-
+import ModuleItem from "./ModuleItem";
+import LessonItem from "./LessonItem";
 
 class LessonListItem extends React.Component {
 
@@ -25,17 +26,39 @@ class LessonListItem extends React.Component {
         render() {
 
 return (
+    <li className="nav-item">
+        <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}`}>
+            <div className="row">
 
-    <Router>
-
-        <Route path="/course-editor/:courseId/module/:moduleId"/>
-            <li className="nav-item">
-                <a className="nav-link" data-toggle="tab" href="#Lesson1" role="tab" aria-controls="home"
-                   aria-selected="true">{this.state.lesson.title}
+                <a className="nav-link">
+                        {this.props.lesson.title}
                 </a>
-            </li>
 
-    </Router>
+
+            </div>
+
+        </Link>
+    </li>
+    //
+    // <Router>
+    //
+    //     <Route path="/course-editor/:courseId/module/:moduleId/lesson"
+    //         exact={true}
+    //     render = { (props) =>
+    //
+    //             <LessonItem
+    //                 lesson={this.state.lesson}
+    //                 deleteLesson={this.props.deleteLesson}
+    //                 courseId={props.courseId}
+    //                 moduleId={props.moduleId}
+    //                 />
+    //                 }
+    //         />
+    //
+    //
+    //
+    //
+    // </Router>
 )
 
 

@@ -10,7 +10,7 @@ import {createStore} from "redux";
 
 import lessonReducer from "../../reducers/LessonReducer";
 
-const store = createStore(lessonReducer)
+
 class ModuleList extends React.Component  {
 
      componentDidMount() {
@@ -21,14 +21,17 @@ class ModuleList extends React.Component  {
           return(
                <div>
                    <div className="container-fluid" style={{paddingTop: "2cm"}}>
-                       <div className="row">
+                       {/*<div className="row">*/}
 
-                           <div className="col-4 bg-light flex-column nav-pills">
+                           {/*<div className="col-4 bg-light flex-column nav-pills">*/}
+
                                 <ul  className="list-group">
                                      {
                                           this.props.modules && this.props.modules.map(module =>
                                               <ModuleListItem
                                                   key = {module._id}
+                                                  courseId={this.props.courseId}
+                                                  moduleId={this.props.moduleId}
                                                   module={module}
                                                   deleteModule={this.props.deleteModule}
                                                   updateModule={this.props.updateModule}
@@ -42,15 +45,13 @@ class ModuleList extends React.Component  {
 
                            </div>
 
-                           <div className="col-8">
-                               <Provider store={store}>
-                                    <LessonList courseId = {this.props.courseId} moduleId = {this.props.moduleId} />
-                               </Provider>
-                           </div>
 
 
-                       </div>
-                   </div>
+
+
+
+                       {/*</div>*/}
+                   {/*</div>*/}
 
 
 
@@ -62,7 +63,7 @@ class ModuleList extends React.Component  {
 
 const stateToPropertyManager = (state) => {
      return {
-          modules: state.modules
+          modules: state.modules.modules
      }
 }
 

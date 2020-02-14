@@ -2,7 +2,7 @@ import React from "react";
 
 import {Link} from "react-router-dom";
 
-const ModuleItemEdit = ({courseId, module, updateModule, state, editModule}) =>
+const ModuleItemEdit = ({courseId, module, updateModule, state, editModule, moduleId}) =>
 {
 
     return(
@@ -16,7 +16,7 @@ const ModuleItemEdit = ({courseId, module, updateModule, state, editModule}) =>
                 </div>
 
                 <div className="col-2">
-                    <Link to={`course-editor/${courseId}`}>
+                    <Link to={`/course-editor/${courseId}/module/${moduleId}`}>
                         <a type="button"  style={{margin:"none", background:"white"}} onClick={() => updateModule(module._id, module)}>
                             <i className="fa fa-check fa-2x"></i>
                         </a>
