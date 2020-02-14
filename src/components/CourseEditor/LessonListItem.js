@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import ModuleItem from "./ModuleItem";
 import LessonItem from "./LessonItem";
 
+
 class LessonListItem extends React.Component {
 
     constructor(props) {
@@ -29,11 +30,20 @@ return (
     <li className="nav-item">
         <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}`}>
             <div className="row">
-
                 <a className="nav-link">
-                        {this.props.lesson.title}
-                </a>
 
+                    {this.props.lesson.title}
+
+                    <a type="button"  style={{margin:"none"}}  onClick={this.editLesson}>
+                        <i className="fa fa-pencil-square fa-2x"></i>
+                    </a>
+
+                    <button type="button" className="close wbdv-module-item-delete-btn"
+                           onClick={() => this.props.deleteLesson(this.state.lesson._id)}>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </a>
 
             </div>
 

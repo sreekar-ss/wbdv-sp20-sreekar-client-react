@@ -10,13 +10,13 @@ export const DELETE_LESSON = "DELETE_LESSON"
 
 export const deleteLesson = (lessonId) => ({
     type: DELETE_LESSON,
-    moduleId: lessonId
+    lessonId: lessonId
 })
 
 export const UPDATE_LESSON = "UPDATE_LESSON"
 export const updateLesson = (updatedLesson) => ({
     type: UPDATE_LESSON,
-    updatedModule: updatedLesson
+    updatedLesson: updatedLesson
 })
 
 
