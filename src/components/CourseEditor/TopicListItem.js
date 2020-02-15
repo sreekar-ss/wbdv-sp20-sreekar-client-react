@@ -27,7 +27,7 @@ render () {
                     <li className="nav-item">
 
                         <div className="row">
-                            <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}`}>
+                            <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`}>
                                 <a className="nav-link">
                                     {this.props.topic.title}
 

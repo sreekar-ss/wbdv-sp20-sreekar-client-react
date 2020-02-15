@@ -34,7 +34,7 @@ return (
                 <li className="nav-item">
 
                         <div className="row">
-                            <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}`}>
+                            <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson._id}`}>
                             <a className="nav-link">
 
                                 {this.props.lesson.title}
