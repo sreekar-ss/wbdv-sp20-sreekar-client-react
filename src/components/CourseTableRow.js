@@ -98,7 +98,7 @@ class CourseTableRow extends React.Component {
 
                         <div className="col">
 
-                            <button className="btn-primary" type="button" style={{border:"none",background:"none"}} onClick={ (e) =>{
+                            <button className="btn-primary" type="button" onClick={ (e) =>{
                                 updateCourse(this.state.course._id, this.state.course).then (status =>
                                     this.setState({
                                         editing: false,
