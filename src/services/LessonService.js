@@ -27,7 +27,6 @@ export const deleteLesson = (lessonId) =>
     }).then(response => response.json())
 
 export const updateLesson = (lessonId, lesson) =>
-{
     fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/lessons/${lessonId}`, {
         method: 'PUT',
         body: JSON.stringify(lesson),
@@ -35,7 +34,7 @@ export const updateLesson = (lessonId, lesson) =>
             'content-type' : 'application/json'
         }
     }).then(response => response.json())
-}
+
 
 export default {
     findAllLessons,

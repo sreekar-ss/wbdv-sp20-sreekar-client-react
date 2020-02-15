@@ -3,7 +3,7 @@ import ModuleListItem from "./ModuleListItem";
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 import {connect, Provider} from "react-redux";
-import {createModule, deleteModule, updateModule, FIND_ALL_MODULES} from "../ModuleActions";
+import {createModule, deleteModule, updateModule, FIND_ALL_MODULES} from "../../actions/ModuleActions";
 import ModuleService from "../../services/ModuleService";
 import LessonList from "./LessonList";
 import {createStore} from "redux";

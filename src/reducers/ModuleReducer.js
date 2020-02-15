@@ -1,4 +1,4 @@
-import {CREATE_MODULE, DELETE_MODULE, FIND_ALL_MODULES, UPDATE_MODULE} from "../components/ModuleActions";
+import {CREATE_MODULE, DELETE_MODULE, FIND_ALL_MODULES, UPDATE_MODULE} from "../actions/ModuleActions";
 
 const initialState = {
     stateVariable1: {},

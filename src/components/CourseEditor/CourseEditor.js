@@ -11,17 +11,20 @@ import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import {findCourseById} from "../../services/CourseService";
 import lessonReducer from "../../reducers/LessonReducer";
 import ModuleEditor from "./ModuleEditor";
+import topicReducer from "../../reducers/TopicReducer";
+import TopicList from "./TopicList";
 
 
 const rootReducer = combineReducers({
     modules: moduleReducer,
-    lessons: lessonReducer
+    lessons: lessonReducer,
+    topics: topicReducer
 })
 
 const store = createStore(rootReducer)
 
 
-const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId}) =>
+const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, lessonId}) =>
 
     <Provider store={store}>
         <div>
@@ -40,7 +43,10 @@ const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId}) =>
                     <LessonList
                         courseId = {courseId}
                         moduleId = {moduleId}/>
-
+                    <TopicList
+                        courseId = {courseId}
+                        moduleId = {moduleId}
+                        lessonId = {lessonId}/>
         </div>
 
 </div>

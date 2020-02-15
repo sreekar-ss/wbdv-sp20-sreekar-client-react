@@ -1,4 +1,4 @@
-import {CREATE_LESSON, DELETE_LESSON, FIND_ALL_LESSONS, UPDATE_LESSON} from "../components/CourseEditor/LessonActions";
+import {CREATE_LESSON, DELETE_LESSON, FIND_ALL_LESSONS, UPDATE_LESSON} from "../actions/LessonActions";
 
 
 const initialState = {
