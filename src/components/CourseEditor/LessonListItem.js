@@ -32,8 +32,9 @@ return (
         { !this.state.editing &&
 
                 <li className="nav-item">
-                    <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}`}>
+
                         <div className="row">
+                            <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}`}>
                             <a className="nav-link">
 
                                 {this.props.lesson.title}
@@ -53,10 +54,11 @@ return (
 
 
                             </a>
+                            </Link>
 
                         </div>
 
-                    </Link>
+
                 </li>
 
             }
