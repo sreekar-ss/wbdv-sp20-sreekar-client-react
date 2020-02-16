@@ -3,7 +3,7 @@ import CourseTableComponent from "./CourseTableComponent";
 import CourseGridComponent from "./CourseGridComponent";
 import CourseEditor from "./CourseEditor/CourseEditor";
 import CourseManagerHeading from "./CourseManagerHeading";
-import {createCourse, findAllCourses, deleteCourse} from "../services/CourseService"
+import {createCourse, findAllCourses, deleteCourse, findCourseById} from "../services/CourseService"
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import CourseListComponent from "./CourseListComponent";
 
@@ -80,6 +80,7 @@ class CourseManagerContainer extends React.Component{
         //     })
         // })
     }
+
 
     showCourseEditor = () =>
         this.setState({

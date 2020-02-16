@@ -1,9 +1,8 @@
 import React from "react";
-import ModuleItem from "./ModuleItem";
+
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
-import ModuleItemEdit from "./ModuleItemEdit";
-import ModuleItemSelected from "./ModuleItemSelected";
-import LessonItem from "./LessonItem";
+
+
 import LessonListItem from "./LessonListItem";
 
 
@@ -37,7 +36,7 @@ render() {
         <div>
             {
                 !this.state.editing &&
-                    <a href="#" className="list-group-item list-group-item-action shadow p-3 mb-3 rounded wbdv-module-item">
+                    <a className="list-group-item list-group-item-action shadow p-3 mb-3 rounded wbdv-module-item">
                         <div className="row">
                             <div className="col-8">
                                 <Link to={`/course-editor/${this.props.courseId}/module/${this.props.module._id}`}>
@@ -94,51 +93,6 @@ render() {
             }
 
         </div>
-
-        // <Router>
-        //     <Route path="/course-editor/:courseId"
-        //         exact={true}
-        //         render = { (props) => {}}
-        //     }/>
-        //
-        //
-        //     <Route path="/course-editor/:courseId/module/:moduleId/edit"
-        //            exact={true}
-        //            render={ (props) =>
-        //            <ModuleItemEdit
-        //                {...props}
-        //                courseId = {props.match.params.courseId}
-        //                module = {this.state.module}
-        //                updateModule = {this.props.updateModule}
-        //                state = {this.state}
-        //                editModule = {this.editModule}
-        //                moduleId = {this.state.module._id}
-        //            />
-        //            }/>
-        //
-        //     <Route path="/course-editor/:courseId/module/:moduleId/lesson"
-        //            exact={true}
-        //            render={(props) => {
-        //         return(
-        //                <ModuleItemSelected
-        //                    module={this.state.module}
-        //                    deleteModule={this.props.deleteModule}
-        //                    courseId={props.match.params.courseId}
-        //                />
-        //                 // <LessonListItem
-        //                 //        {...props}
-        //                 //        courseId={props.match.params.courseId}
-        //                 //        moduleId={props.match.params.moduleId}
-        //                 //        module={this.state.module}
-        //                 //
-        //                 // />
-        //                 )
-        //            }
-        //            }
-        //            />
-        //
-        // </Router>
-
 
     )
 }

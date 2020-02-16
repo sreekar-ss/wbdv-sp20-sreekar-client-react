@@ -10,7 +10,7 @@ import moduleReducer from "../../reducers/ModuleReducer";
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import {findCourseById} from "../../services/CourseService";
 import lessonReducer from "../../reducers/LessonReducer";
-import ModuleEditor from "./ModuleEditor";
+
 import topicReducer from "../../reducers/TopicReducer";
 import TopicList from "./TopicList";
 
