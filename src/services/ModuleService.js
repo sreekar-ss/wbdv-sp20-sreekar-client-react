@@ -25,15 +25,18 @@ export const deleteModule = (moduleId) =>
         method : "DELETE"
     }).then(response => response.json())
 
-export const updateModule = (moduleId, module) =>
+export const updateModule = async (moduleId, module) =>
 {
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/modules/${moduleId}`, {
-        method: 'PUT',
-        body: JSON.stringify(module),
-        headers: {
+    console.log(moduleId)
+    const response = await fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/modules/${moduleId}`,{
+        method : 'PUT',
+        body : JSON.stringify(module),
+        headers : {
             'content-type' : 'application/json'
         }
-    }).then(response => response.json())
+    })
+    return await response.json()
+
 }
 
 export default {

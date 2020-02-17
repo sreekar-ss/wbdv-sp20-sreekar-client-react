@@ -80,6 +80,7 @@ render() {
 
                         <div className="col-2">
                             <button type="button" style={{border:"none",background:"none"}} onClick={(e) =>{
+                                console.log(this.state.module._id)
                                 this.props.updateModule(this.state.module._id, this.state.module).then(status =>
                                     this.setState({
                                         editing: false,

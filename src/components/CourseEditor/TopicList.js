@@ -13,6 +13,12 @@ class TopicList extends React.Component {
         this.props.findTopicsForLesson(this.props.lessonId)
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.lessonId !== prevProps.lessonId){
+            this.props.findTopicsForLesson(this.props.lessonId)
+        }
+    }
+
 
     render() {
 
@@ -33,7 +39,7 @@ class TopicList extends React.Component {
                             />
                         )
                     }
-                    <a type="button" style={{float: "right"}} onClick={() => this.props.createTopic(this.props.topicId)}>
+                    <a type="button" style={{float: "right"}} onClick={() => this.props.createTopic(this.props.lessonId)}>
                         <i className="fa fa-plus fa-2x"></i>
                     </a>
                 </nav>

@@ -3,7 +3,7 @@ import ModuleListItem from "./ModuleListItem";
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 import {connect, Provider} from "react-redux";
-import {createModule, deleteModule, updateModule, FIND_ALL_MODULES} from "../../actions/ModuleActions";
+import {createModule, deleteModule, updateModule, FIND_ALL_MODULES, UPDATE_MODULE} from "../../actions/ModuleActions";
 import ModuleService from "../../services/ModuleService";
 import LessonList from "./LessonList";
 import {createStore} from "redux";
@@ -99,10 +99,14 @@ const dispatchToPropertyManager = (dispatch) => {
                 dispatch(createModule(actualModule)))
         },
 
-        updateModule: (moduleId, module) => {
-            ModuleService.updateModule(moduleId, module)
-                .then(updatedModule =>
-                dispatch(updateModule(updatedModule)))
+        updateModule: async (moduleId, module) => {
+            const updatedModule = await ModuleService.updateModule(moduleId, module)
+            console.log(updatedModule)
+            // dispatch({
+            //         type: UPDATE_MODULE,
+            //         module : updatedModule,
+            //         moduleId: updatedModule._id
+            //     })
         },
     }
 }
