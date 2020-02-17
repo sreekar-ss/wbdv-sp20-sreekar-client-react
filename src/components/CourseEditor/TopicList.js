@@ -39,7 +39,7 @@ class TopicList extends React.Component {
                             />
                         )
                     }
-                    <a type="button" style={{float: "right"}} onClick={() => this.props.createTopic(this.props.lessonId)}>
+                    <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}} onClick={() => this.props.createTopic(this.props.lessonId)}>
                         <i className="fa fa-plus fa-2x"></i>
                     </a>
                 </nav>

@@ -14,7 +14,8 @@ import lessonReducer from "../../reducers/LessonReducer";
 class ModuleList extends React.Component  {
 
     state = {
-        modules : []
+        modules : [],
+
     }
 
     componentDidMount () {
@@ -24,6 +25,19 @@ class ModuleList extends React.Component  {
         })
      }
 
+     // componentDidUpdate(prevProps, prevState, snapshot) {
+     //    if(this.props.moduleId !== prevProps.moduleId){
+     //        this.render()
+     //    }
+     // }
+
+
+    // selectModule = (moduleId) => {
+    //     this.setState({
+    //         selected : true
+    //     })
+    //     return this.state.selected
+    // }
 
     render() {
           return(
