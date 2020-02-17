@@ -37,7 +37,7 @@ return (
 
                             <a className="nav-link">
                             <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson._id}`}>
-                                {this.props.lesson.title}
+                                {this.state.lesson.title}
                             </Link>
                                 <a type="button" style={{margin: "none"}} onClick={() => this.setState({
                                     editing : true

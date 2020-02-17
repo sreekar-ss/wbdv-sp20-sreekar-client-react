@@ -26,20 +26,33 @@ export const deleteLesson = (lessonId) =>
         method : "DELETE"
     }).then(response => response.json())
 
-export const updateLesson = (lessonId, lesson) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/lessons/${lessonId}`, {
+export const findLessonById = (lessonId) => {
+    return fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/lessons/${lessonId}`, {
+        method : 'GET'
+    }).then(response => response.json())
+}
+
+export const updateLesson = async (lessonId, lesson) => {
+
+    const response = await fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/lessons/${lessonId}`, {
         method: 'PUT',
         body: JSON.stringify(lesson),
         headers: {
-            'content-type' : 'application/json'
+            'content-type': 'application/json'
         }
-    }).then(response => response.json())
+    })
+    if (await response.json() === 1) {
+        const responseLesson = findLessonById(lessonId)
+        console.log(responseLesson)
+        return await responseLesson
+    }
 
-
+}
 export default {
     findAllLessons,
     deleteLesson,
     findLessonsForModule,
     createLesson,
-    updateLesson
+    updateLesson,
+    findLessonById
 }

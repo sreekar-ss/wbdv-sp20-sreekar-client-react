@@ -88,10 +88,11 @@ const dispatchToPropertyManager = (dispatch) => {
             })
         },
 
-        updateLesson: (lessonId, lesson) => {
-            LessonService.updateLesson(lessonId, lesson)
-                .then(updatedLesson =>
-                    dispatch(updateLesson(updatedLesson)))
+        updateLesson: async (lessonId, lesson) => {
+            const updatedLesson = await LessonService.updateLesson(lessonId, lesson)
+                console.log(updatedLesson)
+                // .then(updatedLesson =>
+                //     dispatch(updateLesson(updatedLesson)))
         },
 
     }

@@ -25,20 +25,33 @@ export const deleteTopic = (topicId) =>
         method : "DELETE"
     }).then(response => response.json())
 
-export const updateTopic = (topicId, topic) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/topics/${topicId}`, {
+export const findTopicById = (topicId) => {
+    return fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/topics/${topicId}`, {
+        method : 'GET'
+    }).then(response => response.json())
+}
+
+
+export const updateTopic = async (topicId, topic) => {
+    const response = await fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/topics/${topicId}`, {
         method: 'PUT',
         body: JSON.stringify(topic),
         headers: {
-            'content-type' : 'application/json'
+            'content-type': 'application/json'
         }
-    }).then(response => response.json())
+    })
+    if(await response.json() === 1){
+        const responseTopic = findTopicById(topicId)
 
+        return await responseTopic
+    }
 
+}
 export default {
     createTopic,
     findTopicsForLesson,
     findAllTopics,
     deleteTopic,
-    updateTopic
+    updateTopic,
+    findTopicById
 }

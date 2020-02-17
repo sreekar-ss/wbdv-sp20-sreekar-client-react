@@ -29,7 +29,7 @@ render () {
                             <div className="row">
                                 <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`}>
 
-                                        {this.props.topic.title}
+                                        {this.state.topic.title}
                                 </Link>
                                         <a type="button" style={{margin: "none"}} onClick={() => this.setState({
                                                 editing : true

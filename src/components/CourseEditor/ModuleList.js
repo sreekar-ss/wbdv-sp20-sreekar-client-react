@@ -102,11 +102,11 @@ const dispatchToPropertyManager = (dispatch) => {
         updateModule: async (moduleId, module) => {
             const updatedModule = await ModuleService.updateModule(moduleId, module)
             console.log(updatedModule)
-            // dispatch({
-            //         type: UPDATE_MODULE,
-            //         module : updatedModule,
-            //         moduleId: updatedModule._id
-            //     })
+             // dispatch({
+             //         type: UPDATE_MODULE,
+             //         module : updatedModule,
+             //         moduleId: updatedModule._id
+             //     })
         },
     }
 }

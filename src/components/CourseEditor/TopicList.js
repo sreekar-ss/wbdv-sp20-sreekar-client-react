@@ -81,10 +81,9 @@ const dispatchToPropertyManager = (dispatch) => {
             })
         },
 
-        updateTopic: (topicId, topic) => {
-            TopicService.updateTopic(topicId, topic)
-                .then(updatedTopic =>
-                    dispatch(updateTopic(updatedTopic)))
+        updateTopic: async (topicId, topic) => {
+            const updatedTopic = TopicService.updateTopic(topicId, topic)
+                console.log(updatedTopic)
         },
 
     }

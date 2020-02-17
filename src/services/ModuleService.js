@@ -25,6 +25,14 @@ export const deleteModule = (moduleId) =>
         method : "DELETE"
     }).then(response => response.json())
 
+export const findModuleById = (moduleId) => {
+    return fetch(`https://wbdv-generic-server.herokuapp.com/api/siddulas/modules/${moduleId}`, {
+        method : "GET"
+    })
+                .then(response => response.json())
+}
+
+
 export const updateModule = async (moduleId, module) =>
 {
     console.log(moduleId)
@@ -35,8 +43,11 @@ export const updateModule = async (moduleId, module) =>
             'content-type' : 'application/json'
         }
     })
-    return await response.json()
-
+    if( await response.json() === 1){
+        const responseModule = findModuleById(moduleId)
+        console.log(responseModule)
+        return await responseModule
+    }
 }
 
 export default {
@@ -44,5 +55,6 @@ export default {
     deleteModule,
     findModulesForCourse,
     createModule,
-    updateModule
+    updateModule,
+    findModuleById
 }
