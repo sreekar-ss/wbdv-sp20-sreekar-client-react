@@ -13,11 +13,19 @@ import lessonReducer from "../../reducers/LessonReducer";
 
 class ModuleList extends React.Component  {
 
-     componentDidMount() {
-          this.props.findModulesForCourse(this.props.courseId)
+    state = {
+        modules : []
+    }
+
+    componentDidMount () {
+          const modules = this.props.findModulesForCourse(this.props.courseId)
+        this.setState({
+            modules: modules
+        })
      }
 
-     render() {
+
+    render() {
           return(
                <div>
                    <div className="container-fluid" style={{paddingTop: "2cm"}}>

@@ -39,7 +39,7 @@ class CourseEditorHeader extends React.Component{
 
             <a className="navbar-brand col-sm col" href="#">
 
-                <h3 className="wbdv-course-title">{this.state.course.title}</h3>
+                <h3 className="wbdv-course-title" style={{color: "azure"}}>{this.state.course.title}</h3>
             </a>
 
             <button className="navbar-toggler col" type="button" data-toggle="collapse"

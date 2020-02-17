@@ -14,8 +14,20 @@ class LessonList extends React.Component {
         this.props.findLessonsForModule(this.props.moduleId)
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.moduleId !== prevProps.moduleId) {
+            this.props.findLessonsForModule(this.props.moduleId)
+        }
+    }
 
 
+
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //
+    //     if(this.props.findLessonsForModule(this.props.moduleId) !== prevProps.findLessonsForModule(prevProps.moduleId)) {
+    //             this.fetchData(this.props.findLessonForModule(this.props.moduleId))
+    //     }
+    // }
     render () {
 
         return(
@@ -35,7 +47,7 @@ class LessonList extends React.Component {
                         />
                     )
                 }
-                <a href="#" style={{float: "right"}} onClick={() => this.props.createLesson(this.props.moduleId)}>
+                <a type="button" style={{float: "right"}} onClick={() => this.props.createLesson(this.props.moduleId)}>
                     <i className="fa fa-plus fa-2x"></i>
                 </a>
             </ul>

@@ -18,7 +18,7 @@ class TopicList extends React.Component {
 
         return (
             <div>
-                <ul className="nav nav-pills">
+                <nav className="nav nav-pills">
                     {
                         this.props.topics && this.props.topics.map(topic =>
                             <TopicListItem
@@ -33,10 +33,10 @@ class TopicList extends React.Component {
                             />
                         )
                     }
-                    <a href="#" style={{float: "right"}} onClick={() => this.props.createTopic(this.props.topicId)}>
+                    <a type="button" style={{float: "right"}} onClick={() => this.props.createTopic(this.props.topicId)}>
                         <i className="fa fa-plus fa-2x"></i>
                     </a>
-                </ul>
+                </nav>
 
             </div>)
 

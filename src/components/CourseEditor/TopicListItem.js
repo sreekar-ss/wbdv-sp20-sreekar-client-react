@@ -20,35 +20,30 @@ render () {
     return (
 
 
-        <div>
+
+            <a className="nav-item nav-link">
             {
                 !this.state.editing &&
 
-                    <li className="nav-item">
 
-                        <div className="row">
-                            <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`}>
-                                <a className="nav-link">
-                                    {this.props.topic.title}
+                            <div className="row">
+                                <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`}>
 
-                                    <a type="button" style={{margin: "none"}} onClick={() => this.setState({
-                                            editing : true
-                                        })}>
-                                        <i className="fa fa-pencil-square fa-2x"></i>
-                                    </a>
+                                        {this.props.topic.title}
+                                </Link>
+                                        <a type="button" style={{margin: "none"}} onClick={() => this.setState({
+                                                editing : true
+                                            })}>
+                                            <i className="fa fa-pencil-square fa-2x"></i>
+                                        </a>
 
-                                    <button type="button" className="close wbdv-module-item-delete-btn"
-                                            onClick={() => this.props.deleteTopic(this.state.topic._id)}>
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                        <button type="button" className="close wbdv-module-item-delete-btn"
+                                                onClick={() => this.props.deleteTopic(this.state.topic._id)}>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
 
-                                </a>
 
-                            </Link>
-
-                        </div>
-
-                    </li>
+                            </div>
 
             }
 
@@ -59,7 +54,7 @@ render () {
 
                     <div className="row">
                         <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}`}>
-                            <a className="nav-link active">
+                            {/*<a className="nav-link active">*/}
                                 <input className="form-control"
                                        onChange={(e )=> this.setState(
                                            {
@@ -81,7 +76,7 @@ render () {
                                     <i className="fa fa-check-circle fa-2x"></i>
                                 </button>
 
-                            </a>
+                            {/*</a>*/}
 
                         </Link>
 
@@ -95,9 +90,8 @@ render () {
 
 
 
+            </a>
 
-
-        </div>
     )
 
 }
