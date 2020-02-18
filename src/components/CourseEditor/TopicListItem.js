@@ -26,19 +26,19 @@ render () {
             {
                 !this.state.editing && (this.state.selected !== this.state.topic._id) &&
 
-                <a className="nav-item nav-link shadow">
+                <a className="nav-item nav-link shadow rounded-pill">
                             <div className="row" onClick={(e)=> {
                                 this.setState({
                                     selected : this.state.topic._id
                                 })
                             }}>
-                                <div className="col-6" >
+                                <div className="col-4" >
                                     {/*<Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`}>*/}
 
                                             {this.state.topic.title}
                                     {/*</Link>*/}
                                 </div>
-                                <div className="col">
+                                <div className="col-2">
                                         <a type="button" style={{margin: "none"}} onClick={() => this.setState({
                                                 editing : true
                                             })}>
@@ -61,13 +61,13 @@ render () {
     {
         !this.state.editing && (this.state.selected === this.state.topic._id) &&
 
-        <a className="nav-item nav-link shadow bg-success">
+        <a className="nav-item nav-link shadow bg-success rounded-pill">
             <div className="row" onClick={(e) => {
                 this.setState({
                     selected : ''
                 })
             }}>
-                <div className="col-6" >
+                <div className="col-4" >
                     {/*<Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`}>*/}
 
                         {this.state.topic.title}
@@ -95,7 +95,7 @@ render () {
             {
 
                 this.state.editing &&
-                <a className="nav-item nav-link shadow">
+                <a className="nav-item nav-link shadow rounded-pill">
                     <li className="nav-item">
 
                         <div className="row">

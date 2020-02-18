@@ -32,7 +32,7 @@ return (
     <div>
         { !this.state.editing && (this.state.selected !== this.state.lesson._id) &&
 
-                <li className="nav-item nav-item shadow list-group-item-action" style={{border : "0.5cm"}}>
+                <li className="nav-item shadow list-group-item-action" style={{border : "0.5cm"}}>
                     <a className="nav-link">
                         <div className="row" onClick={(e)=> {
                             this.setState({
@@ -41,7 +41,7 @@ return (
                         }}>
                         <div className="col-6">
                             <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson._id}`}>
-                                {this.state.lesson.title}
+                                <span>{this.state.lesson.title}</span>
                             </Link>
                         </div>
                             <div className="col">
@@ -68,8 +68,8 @@ return (
 
         { !this.state.editing && (this.state.selected === this.state.lesson._id) &&
 
-                <li className="nav-item" style={{border : "0.5cm"}}>
-                    <a className="nav-link bg-light bg-dark shadow">
+                <li className="nav-item shadow list-group-item-primary" style={{border : "0.5cm"}}>
+                    <a className="nav-link">
                         <div className="row" onClick={(e)=> {
                             this.setState({
                                 selected :''
