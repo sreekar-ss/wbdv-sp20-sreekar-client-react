@@ -13,18 +13,21 @@ import lessonReducer from "../../reducers/LessonReducer";
 
 import topicReducer from "../../reducers/TopicReducer";
 import TopicList from "./TopicList";
+import widgetReducer from "../../reducers/WidgetReducer";
+import WidgetList from "./WidgetList";
 
 
 const rootReducer = combineReducers({
     modules: moduleReducer,
     lessons: lessonReducer,
-    topics: topicReducer
+    topics: topicReducer,
+    widgets: widgetReducer
 })
 
 const store = createStore(rootReducer)
 
 
-const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, lessonId}) =>
+const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, lessonId, widgetId}) =>
 
     <Provider store={store}>
         <div>
@@ -47,6 +50,11 @@ const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, les
                         courseId = {courseId}
                         moduleId = {moduleId}
                         lessonId = {lessonId}/>
+                     <WidgetList
+                        courseId = {courseId}
+                        moduleId = {moduleId}
+                        lessonId = {lessonId}
+                        widgetId = {widgetId}/>
         </div>
 
 </div>
