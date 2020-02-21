@@ -29,7 +29,8 @@ class WidgetList extends React.Component{
 
     state = {
         widget: {},
-        widgets: this.props.widgets
+        widgets: this.props.widgets,
+        addWidgetType: "HEADING"
     }
 
     save = (widgetId, widget) => {
@@ -74,9 +75,32 @@ class WidgetList extends React.Component{
                     </div>
                     )
                 }
-                <a type="button" style={{float: "left", paddingLeft: "20px", paddingTop: "20px"}} onClick={() => this.props.createWidget(this.props.topicId)}>
-                    <i className="fa fa-plus fa-2x"></i>
-                </a>
+
+                <select onChange={(e)=> {
+                    const widgetType = e.target.value
+                    this.setState({
+                        addWidgetType: widgetType
+                    })
+                }}>
+                    <option value="HEADING">Heading</option>
+                    <option value="PARAGRAPH">Paragraph</option>
+                </select>
+
+                {
+                    this.state.addWidgetType === "HEADING" &&
+                    <a type="button" style={{float: "left", paddingLeft: "20px", paddingTop: "20px"}}
+                       onClick={() => this.props.createWidget(this.props.topicId)}>
+                        <i className="fa fa-plus fa-2x"></i>
+                    </a>
+                }
+                {
+                    this.state.addWidgetType === "PARAGRAPH" &&
+                    <a type="button" style={{float: "left", paddingLeft: "20px", paddingTop: "20px"}}
+                       onClick={() => this.props.createWidgetPara(this.props.topicId)}>
+                        <i className="fa fa-plus fa-2x"></i>
+                    </a>
+
+                }
 
             </div>
 
@@ -126,7 +150,8 @@ const dispatchToPropertyManager = (dispatch) => {
                 body: JSON.stringify({
                     id: (new Date()).getTime()+"",
                     title: "New Widget",
-                    index: ++counter
+                    index: ++counter,
+                    type: "HEADING"
 
                 }),
                 headers:{
@@ -136,6 +161,27 @@ const dispatchToPropertyManager = (dispatch) => {
                 .then(actualWidget => {
                 dispatch(createWidget(actualWidget))
             })
+            console.log('Reached Here')
+        },
+
+        createWidgetPara : (topicId) => {
+            //WidgetService.createWidget(topicId, {
+            fetch(`http://localhost:8080/api/topics/${topicId}/widgets`, {
+                method: "POST",
+                body: JSON.stringify({
+                    id: (new Date()).getTime()+"",
+                    title: "New Widget",
+                    index: ++counter,
+                    type: "PARAGRAPH"
+
+                }),
+                headers:{
+                    'content-type': 'application/json'
+                }
+            }).then(response => response.json())
+                .then(actualWidget => {
+                    dispatch(createWidget(actualWidget))
+                })
             console.log('Reached Here')
         },
 
