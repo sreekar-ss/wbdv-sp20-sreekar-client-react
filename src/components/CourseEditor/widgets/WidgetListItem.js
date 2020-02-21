@@ -15,6 +15,10 @@ class WidgetListItem extends React.Component{
                     <HeadingWidget
                         editing = {this.props.editing}
                         widget = {this.props.widget}
+                        save = {this.props.save}
+                        notEditing = {this.props.notEditing}
+                        positionUp = {this.props.positionUp}
+                        topicid = {this.props.topicId}
                     />
                 }
                 {
@@ -22,6 +26,9 @@ class WidgetListItem extends React.Component{
                     <ParagraphWidget
                         editing = {this.props.editing}
                         widget = {this.props.widget}
+                        save = {this.props.save}
+                        notEditing = {this.props.notEditing}
+                        positionUp = {this.props.positionUp}
                     />
                 }
                 {
@@ -31,10 +38,6 @@ class WidgetListItem extends React.Component{
                                 onClick={() =>
                                     this.props.deleteWidget(this.props.widget.id)}>
                             <span aria-hidden="true" style={{float: "left"}}>&times;</span>
-                        </button>
-
-                        <button onClick={() => this.props.save()}>
-                            <i className="fa fa-check-circle fa-2x"></i>
                         </button>
                     </span>
                 }

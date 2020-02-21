@@ -19,7 +19,6 @@ class TopicList extends React.Component {
         }
     }
 
-
     render() {
 
         return (

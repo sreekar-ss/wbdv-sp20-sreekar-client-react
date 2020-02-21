@@ -1,4 +1,4 @@
-import {CREATE_WIDGET, DELETE_WIDGET, FIND_ALL_WIDGETS, UPDATE_WIDGET} from "../actions/WidgetActions";
+import {CREATE_WIDGET, DELETE_WIDGET, FIND_ALL_WIDGETS, POSITION_UP, UPDATE_WIDGET} from "../actions/WidgetActions";
 
 
 const initialState = {
@@ -29,12 +29,16 @@ const widgetReducer = (state = initialState, action) => {
             }
 
         case UPDATE_WIDGET:
+            console.log("In reducer ");
             return {
-                widgets: [
-                    state.widgets.filter(widget => widget.id !== action.widgetId),
-                    action.updatedWidget
-                ]
+                widgets: state.widgets.map(widget => widget.id === action.widget.id ? action.widget: widget)
             }
+
+        // case POSITION_UP:
+        //     console.log("In reducer ");
+        //     return {
+        //
+        //     }
 
         default:
             return state

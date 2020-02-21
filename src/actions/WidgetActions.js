@@ -19,9 +19,22 @@ export const deleteWidget = (widgetId) => ({
 
 export const UPDATE_WIDGET = "UPDATE_TOPIC"
 
-export const updateWidget = (updatedWidget) => ({
+export const updateWidget = (updatedWidget) => (
+    console.log("In action ",updatedWidget),
+    {
     type: UPDATE_WIDGET,
-    updatedWidget: updatedWidget
+    widget: updatedWidget
 })
+
+
+export const POSITION_UP = "POSITION_UP"
+
+export const positionUp = (widget) => (
+    console.log("In action ",widget),
+        {
+            type: POSITION_UP,
+            widget:widget
+        }
+)
 
 export const FIND_ALL_WIDGETS = "FIND_ALL_WIDGETS"

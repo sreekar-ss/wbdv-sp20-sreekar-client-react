@@ -34,10 +34,7 @@ const topicReducer = (state = initialState, action) => {
 
         case UPDATE_TOPIC:
             return {
-                topics: [
-                    state.topics.filter(topic => topic._id !== action.topicId),
-                    action.updatedTopic
-                ]
+                topics: state.topics.map(topic => topic._id !== action.topicId?topic:action.updatedTopic)
             }
         default:
             return state

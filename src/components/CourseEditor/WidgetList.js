@@ -1,12 +1,13 @@
 import React from "react";
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
-import {createWidget, deleteWidget, FIND_ALL_WIDGETS} from "../../actions/WidgetActions";
+import {createWidget, deleteWidget, FIND_ALL_WIDGETS, updateWidget} from "../../actions/WidgetActions";
 import TopicService from "../../services/TopicService";
 import {connect} from "react-redux";
 import HeadingWidget from "./widgets/HeadingWidget";
 import ParagraphWidget from "./widgets/ParagraphWidget";
 import WidgetListItem from "./widgets/WidgetListItem";
+import WidgetService from "../../services/WidgetService";
 
 
 
@@ -27,26 +28,40 @@ class WidgetList extends React.Component{
     }
 
     state = {
-        widget: {}
+        widget: {},
+        widgets: this.props.widgets
     }
 
-    save = () => {
+    save = (widgetId, widget) => {
+        this.setState({
+            widget: {}
+        })
+        this.props.updateWidget(widgetId,widget)
+    }
+
+    notEditing = () => {
         this.setState({
             widget: {}
         })
     }
 
+
+
     render() {
         return (
             <div>
                 {
-                    this.props.widgets.map(widget =>
+                    this.props.widgets && this.props.widgets.map(widget =>
                     <div key={widget.id}>
                         <WidgetListItem
                             deleteWidget={this.props.deleteWidget}
                             widget={widget}
                             editing={widget === this.state.widget}
                             save={this.save}
+                            notEditing={this.notEditing}
+                            updateWidget={this.props.updateWidget}
+                            positionUp={this.props.positionUp}
+                            topicId={this.props.topicId}
                         />
                         {
                             widget !== this.state.widget &&
@@ -78,7 +93,7 @@ const stateToPropertyManager = (state) => {
     }
 }
 
-
+let counter = -1;
 
 const dispatchToPropertyManager = (dispatch) => {
     return {
@@ -110,7 +125,9 @@ const dispatchToPropertyManager = (dispatch) => {
                 method: "POST",
                 body: JSON.stringify({
                     id: (new Date()).getTime()+"",
-                    title: "New Widget"
+                    title: "New Widget",
+                    index: ++counter
+
                 }),
                 headers:{
                     'content-type': 'application/json'
@@ -121,12 +138,35 @@ const dispatchToPropertyManager = (dispatch) => {
             })
             console.log('Reached Here')
         },
-        //
-        //
-        // updateWidget: async (widgetId, widget) => {
-        //     const updatedWidget = WodgetService.updateWidget(widgetId, widget)
-        //     console.log(updatedWidget)
-        // },
+
+        positionUp : (topicId, widgetId, widget) => {
+            fetch(`http://localhost:8080/api/topics/${topicId}/widgets/${widgetId}/up`,{
+                method: "POST",
+                body: JSON.stringify(widget),
+                headers:{
+                    'content-type': 'application/json'
+                }}).then(response => response.json()).then(actualWidgets =>
+                    dispatch({
+                        type: FIND_ALL_WIDGETS,
+                        widgets: actualWidgets
+                    }))
+        },
+
+
+        updateWidget: async (widgetId, widget) => {
+            const updatedWidget = WidgetService.updateWidget(widgetId, widget)
+            // fetch(`http://localhost:8080/api/widgets/${widgetId}`, {
+            //     method: "PUT",
+            //     body: JSON.stringify(widget),
+            //     headers:{
+            //         'content-type': 'application/json'
+            //     }
+            // }).then(response => await response.json())
+                .then(updatedWidget => {
+                    dispatch(updateWidget(widget))
+                })
+            console.log("updated Successfully")
+        },
 
     }
 

@@ -33,10 +33,10 @@ render () {
                                 })
                             }}>
                                 <div className="col-4" >
-                                    {/*<Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`}>*/}
+                                    <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`}>
 
                                             {this.state.topic.title}
-                                    {/*</Link>*/}
+                                    </Link>
                                 </div>
                                 <div className="col-2">
                                         <a type="button" style={{margin: "none"}} onClick={() => this.setState({
@@ -68,10 +68,9 @@ render () {
                 })
             }}>
                 <div className="col-4" >
-                    {/*<Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`}>*/}
-
+                    <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`}>
                         {this.state.topic.title}
-                    {/*</Link>*/}
+                    </Link>
                 </div>
                 <div className="col">
                     <a type="button" style={{margin: "none"}} onClick={() => this.setState({
