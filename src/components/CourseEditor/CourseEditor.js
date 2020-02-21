@@ -27,7 +27,7 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer)
 
 
-const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, lessonId, widgetId}) =>
+const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, lessonId, topicId}) =>
 
     <Provider store={store}>
         <div>
@@ -54,7 +54,7 @@ const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, les
                         courseId = {courseId}
                         moduleId = {moduleId}
                         lessonId = {lessonId}
-                        widgetId = {widgetId}/>
+                        topicId = {topicId}/>
         </div>
 
 </div>

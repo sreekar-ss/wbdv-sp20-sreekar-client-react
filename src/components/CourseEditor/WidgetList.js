@@ -1,12 +1,12 @@
-
-
-
 import React from "react";
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 import {createWidget, deleteWidget, FIND_ALL_WIDGETS} from "../../actions/WidgetActions";
 import TopicService from "../../services/TopicService";
 import {connect} from "react-redux";
+import HeadingWidget from "./widgets/HeadingWidget";
+import ParagraphWidget from "./widgets/ParagraphWidget";
+import WidgetListItem from "./widgets/WidgetListItem";
 
 
 
@@ -26,19 +26,42 @@ class WidgetList extends React.Component{
         }
     }
 
+    state = {
+        widget: {}
+    }
+
+    save = () => {
+        this.setState({
+            widget: {}
+        })
+    }
+
     render() {
         return (
             <div>
-                <h1>Widget List</h1>
                 {
                     this.props.widgets.map(widget =>
-                    <li key={widget.id}>
-                        {widget.title}
-                    </li>
+                    <div key={widget.id}>
+                        <WidgetListItem
+                            deleteWidget={this.props.deleteWidget}
+                            widget={widget}
+                            editing={widget === this.state.widget}
+                            save={this.save}
+                        />
+                        {
+                            widget !== this.state.widget &&
+                            <button onClick={() => this.setState({
+                            widget: widget
+                        })}>
+                            <i className="fa fa-pencil-square fa-2x"></i>
+                        </button>
+                        }
+                    </div>
                     )
                 }
-
-
+                <a type="button" style={{float: "left", paddingLeft: "20px", paddingTop: "20px"}} onClick={() => this.props.createWidget(this.props.topicId)}>
+                    <i className="fa fa-plus fa-2x"></i>
+                </a>
 
             </div>
 
@@ -62,7 +85,7 @@ const dispatchToPropertyManager = (dispatch) => {
 
         findWidgetsForTopic : (topicId) => {
             //WidgetService.findWidgetsForTopic(topicId)
-              fetch("http://localhost:8080/api/widgets")
+              fetch(`http://localhost:8080/api/topics/${topicId}/widgets`)
                 .then(response => response.json())
                 .then(actualWidgets =>
                     dispatch({
@@ -71,21 +94,33 @@ const dispatchToPropertyManager = (dispatch) => {
                     }))
         },
 
-        //  deleteWidget : (widgetId) => {
-        //         WidgetService.deleteWidget(widgetId)
-        //             .then(status =>
-        //                 dispatch(deleteWidget(widgetId))
-        //             )
-        //  },
-        //
-        //
-        // createWidget : (topicId) => {
-        //     WidgetService.createWidget(topicId, {
-        //         title: 'New Widget'
-        //     }).then(actualWidget => {
-        //         dispatch(createWidget(actualWidget))
-        //     })
-        // },
+         deleteWidget : (widgetId) => {
+                //WidgetService.deleteWidget(widgetId)
+                fetch(`http://localhost:8080/api/widgets/${widgetId}`, {
+                    method: "DELETE"
+                }).then(response => response.json())
+                    .then(status =>
+                        dispatch(deleteWidget(widgetId))
+                    )
+         },
+
+        createWidget : (topicId) => {
+            //WidgetService.createWidget(topicId, {
+            fetch(`http://localhost:8080/api/topics/${topicId}/widgets`, {
+                method: "POST",
+                body: JSON.stringify({
+                    id: (new Date()).getTime()+"",
+                    title: "New Widget"
+                }),
+                headers:{
+                    'content-type': 'application/json'
+                }
+            }).then(response => response.json())
+                .then(actualWidget => {
+                dispatch(createWidget(actualWidget))
+            })
+            console.log('Reached Here')
+        },
         //
         //
         // updateWidget: async (widgetId, widget) => {
