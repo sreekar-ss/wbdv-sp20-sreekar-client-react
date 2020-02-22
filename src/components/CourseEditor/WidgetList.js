@@ -140,7 +140,7 @@ const dispatchToPropertyManager = (dispatch) => {
 
         findWidgetsForTopic : (topicId) => {
             //WidgetService.findWidgetsForTopic(topicId)
-              fetch(`http://localhost:8080/api/topics/${topicId}/widgets`)
+              fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/topics/${topicId}/widgets`)
                 .then(response => response.json())
                 .then(actualWidgets =>
                     dispatch({
@@ -151,7 +151,7 @@ const dispatchToPropertyManager = (dispatch) => {
 
          deleteWidget : (widgetId) => {
                 //WidgetService.deleteWidget(widgetId)
-                fetch(`http://localhost:8080/api/widgets/${widgetId}`, {
+                fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/widgets/${widgetId}`, {
                     method: "DELETE"
                 }).then(response => response.json())
                     .then(status =>
@@ -161,7 +161,7 @@ const dispatchToPropertyManager = (dispatch) => {
 
         createWidget : (topicId) => {
             //WidgetService.createWidget(topicId, {
-            fetch(`http://localhost:8080/api/topics/${topicId}/widgets`, {
+            fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/topics/${topicId}/widgets`, {
                 method: "POST",
                 body: JSON.stringify({
                     id: (new Date()).getTime()+"",
@@ -182,7 +182,7 @@ const dispatchToPropertyManager = (dispatch) => {
 
         createWidgetPara : (topicId) => {
             //WidgetService.createWidget(topicId, {
-            fetch(`http://localhost:8080/api/topics/${topicId}/widgets`, {
+            fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/topics/${topicId}/widgets`, {
                 method: "POST",
                 body: JSON.stringify({
                     id: (new Date()).getTime()+"",
