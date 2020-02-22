@@ -1,7 +1,14 @@
 import React from "react";
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
-import {createWidget, deleteWidget, FIND_ALL_WIDGETS, updateWidget} from "../../actions/WidgetActions";
+import {
+    createWidget,
+    deleteWidget,
+    FIND_ALL_WIDGETS,
+    POSITION_DOWN,
+    POSITION_UP,
+    updateWidget
+} from "../../actions/WidgetActions";
 import TopicService from "../../services/TopicService";
 import {connect} from "react-redux";
 import HeadingWidget from "./widgets/HeadingWidget";
@@ -50,10 +57,12 @@ class WidgetList extends React.Component{
 
     render() {
         return (
-            <div>
+            <div className="container-fluid">
+                <span>
                 {
                     this.props.widgets && this.props.widgets.map(widget =>
-                    <div key={widget.id}>
+                    <div key={widget.id} className="row">
+                        <div className="col-10" style={{paddingTop: "1cm"}}>
                         <WidgetListItem
                             deleteWidget={this.props.deleteWidget}
                             widget={widget}
@@ -62,21 +71,27 @@ class WidgetList extends React.Component{
                             notEditing={this.notEditing}
                             updateWidget={this.props.updateWidget}
                             positionUp={this.props.positionUp}
+                            positionDown={this.props.positionDown}
                             topicId={this.props.topicId}
+                            counter={counter}
                         />
-                        {
-                            widget !== this.state.widget &&
-                            <button onClick={() => this.setState({
-                            widget: widget
-                        })}>
-                            <i className="fa fa-pencil-square fa-2x"></i>
-                        </button>
-                        }
+                        </div>
+                        <div className="col-2" style={{paddingTop: "1cm"}}>
+                            {
+                                widget !== this.state.widget &&
+                            <button className="btn btn-primary" style={{float:"right"}} onClick={() => this.setState({
+                                widget: widget
+                            })}>
+                                <i className="fa fa-pencil-square fa-2x"></i>
+                            </button>
+                            }
+                        </div>
                     </div>
                     )
                 }
-
-                <select onChange={(e)=> {
+            </span>
+            <div className="col-4 align-self-center" style={{paddingTop: "1cm"}}>
+                <select className="form-control" onChange={(e)=> {
                     const widgetType = e.target.value
                     this.setState({
                         addWidgetType: widgetType
@@ -88,19 +103,20 @@ class WidgetList extends React.Component{
 
                 {
                     this.state.addWidgetType === "HEADING" &&
-                    <a type="button" style={{float: "left", paddingLeft: "20px", paddingTop: "20px"}}
+                    <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
                        onClick={() => this.props.createWidget(this.props.topicId)}>
                         <i className="fa fa-plus fa-2x"></i>
                     </a>
                 }
                 {
                     this.state.addWidgetType === "PARAGRAPH" &&
-                    <a type="button" style={{float: "left", paddingLeft: "20px", paddingTop: "20px"}}
+                    <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
                        onClick={() => this.props.createWidgetPara(this.props.topicId)}>
                         <i className="fa fa-plus fa-2x"></i>
                     </a>
 
                 }
+            </div>
 
             </div>
 
@@ -149,7 +165,7 @@ const dispatchToPropertyManager = (dispatch) => {
                 method: "POST",
                 body: JSON.stringify({
                     id: (new Date()).getTime()+"",
-                    title: "New Widget",
+                    title: "Heading Widget",
                     index: ++counter,
                     type: "HEADING"
 
@@ -170,7 +186,7 @@ const dispatchToPropertyManager = (dispatch) => {
                 method: "POST",
                 body: JSON.stringify({
                     id: (new Date()).getTime()+"",
-                    title: "New Widget",
+                    title: "Paragraph Widget",
                     index: ++counter,
                     type: "PARAGRAPH"
 
@@ -185,29 +201,27 @@ const dispatchToPropertyManager = (dispatch) => {
             console.log('Reached Here')
         },
 
-        positionUp : (topicId, widgetId, widget) => {
-            fetch(`http://localhost:8080/api/topics/${topicId}/widgets/${widgetId}/up`,{
-                method: "POST",
-                body: JSON.stringify(widget),
-                headers:{
-                    'content-type': 'application/json'
-                }}).then(response => response.json()).then(actualWidgets =>
+        positionUp : async (topicId, widgetId, widget) => {
+            const responseWidgets = WidgetService.positionUp(topicId, widgetId, widget)
+                .then(responseWidgets =>
                     dispatch({
-                        type: FIND_ALL_WIDGETS,
-                        widgets: actualWidgets
+                        type: POSITION_UP,
+                        widgets: responseWidgets
                     }))
         },
+
+        positionDown : async (topicId, widgetId, widget) => {
+            const responseWidgets = WidgetService.positionDown(topicId, widgetId, widget)
+                .then(responseWidgets =>
+                    dispatch({
+                        type: POSITION_DOWN,
+                        widgets: responseWidgets
+                    }))
+    },
 
 
         updateWidget: async (widgetId, widget) => {
             const updatedWidget = WidgetService.updateWidget(widgetId, widget)
-            // fetch(`http://localhost:8080/api/widgets/${widgetId}`, {
-            //     method: "PUT",
-            //     body: JSON.stringify(widget),
-            //     headers:{
-            //         'content-type': 'application/json'
-            //     }
-            // }).then(response => await response.json())
                 .then(updatedWidget => {
                     dispatch(updateWidget(widget))
                 })

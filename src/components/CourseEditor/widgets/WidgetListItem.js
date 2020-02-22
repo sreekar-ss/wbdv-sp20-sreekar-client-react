@@ -18,7 +18,9 @@ class WidgetListItem extends React.Component{
                         save = {this.props.save}
                         notEditing = {this.props.notEditing}
                         positionUp = {this.props.positionUp}
-                        topicid = {this.props.topicId}
+                        positionDown = {this.props.positionDown}
+                        topicId = {this.props.topicId}
+                        counter ={this.props.counter}
                     />
                 }
                 {
@@ -29,15 +31,16 @@ class WidgetListItem extends React.Component{
                         save = {this.props.save}
                         notEditing = {this.props.notEditing}
                         positionUp = {this.props.positionUp}
+                        positionDown = {this.props.positionDown}
+                        topicId = {this.props.topicId}
                     />
                 }
                 {
                     this.props.editing &&
                     <span>
-                        <button type="button" className="close"
-                                onClick={() =>
-                                    this.props.deleteWidget(this.props.widget.id)}>
-                            <span aria-hidden="true" style={{float: "left"}}>&times;</span>
+                        <button type="button" className="btn btn-danger" style={{float:"right"}}
+                                onClick={() => this.props.deleteWidget(this.props.widget.id)}>
+                            Delete
                         </button>
                     </span>
                 }

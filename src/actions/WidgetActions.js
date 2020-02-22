@@ -29,12 +29,7 @@ export const updateWidget = (updatedWidget) => (
 
 export const POSITION_UP = "POSITION_UP"
 
-export const positionUp = (widget) => (
-    console.log("In action ",widget),
-        {
-            type: POSITION_UP,
-            widget:widget
-        }
-)
+export const POSITION_DOWN = "POSITION_DOWN"
+
 
 export const FIND_ALL_WIDGETS = "FIND_ALL_WIDGETS"

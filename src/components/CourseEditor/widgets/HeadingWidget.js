@@ -11,11 +11,32 @@ state = {
 
     render() {
         return (
-            <div>
+            <div className="container-fluid">
                 {
                     this.props.editing &&
                     <div>
-                        <input
+                        <span className="row">
+                            <div className="col">
+                                <h2>Heading Widget</h2>
+                            </div>
+                            <div className="col" style={{float:"right"}}>
+                                { (this.props.widget.index !== 0) &&
+                                <button className="btn btn-primary" style={{margin:"10px"}} onClick={() => this.props.positionUp(this.props.topicId, this.props.widget.id, this.props.widget)}>
+                                    <i className="fa fa-arrow-circle-up fa-2x"></i>
+                                </button>}
+                                { (this.props.widget.index !== this.props.counter-1) &&
+                                <button className="btn btn-primary" style={{margin:"10px"}} onClick={() => this.props.positionDown(this.props.topicId, this.props.widget.id, this.props.widget)}>
+                                    <i className="fa fa-arrow-circle-down fa-2x"></i>
+                                </button>}
+                                <button className="btn btn-success" style={{margin:"10px"}} onClick={() => this.props.save(this.state.widget.id, this.state.widget)}>
+                                    <i className="fa fa-check-circle fa-2x"></i>
+                                </button>
+                                <button className="btn btn-danger" style={{margin:"10px"}} onClick={() => this.props.notEditing()}>
+                                    Cancel
+                                </button>
+                            </div>
+                        </span>
+                        <input className="form-control" placeholder="Type the name of your Heading"
                             onChange={(e) => {
                                 const newTitle = e.target.value;
                                 this.setState(prevState => ({
@@ -26,7 +47,7 @@ state = {
                                 }))
                             }}
                             value={this.state.widget.title}/>
-                        <select
+                        <select className="form-control"
                             onChange={(e) => {
                                 let newSize = e.target.value
                                 newSize = parseInt(newSize)
@@ -46,11 +67,9 @@ state = {
                             <option value={6}>Heading 6</option>
                         </select>
 
-                        <button onClick={() => this.props.positionUp(this.props.topicId, this.props.widget.id, this.props.widget)}>
-                            <i className="fa fa-arrow-circle-up fa-2x"></i>
-                        </button>
 
-                        <div>
+
+                        <div style={{paddingTop: "10px"}}>
                             <h4>Preview</h4>
 
                             <div>
@@ -64,12 +83,7 @@ state = {
 
                         </div>
 
-                        <button onClick={() => this.props.save(this.state.widget.id, this.state.widget)}>
-                            <i className="fa fa-check-circle fa-2x"></i>
-                        </button>
-                        <button onClick={() => this.props.notEditing()}>
-                            <i className="fa fa-times-circle fa-2x"></i>
-                        </button>
+
                     </div>
                 }
                 {
