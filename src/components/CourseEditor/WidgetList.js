@@ -140,7 +140,7 @@ const dispatchToPropertyManager = (dispatch) => {
 
         findWidgetsForTopic : (topicId) => {
             //WidgetService.findWidgetsForTopic(topicId)
-              fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/topics/${topicId}/widgets`)
+              fetch(`http://localhost:8080/api/topics/${topicId}/widgets`)
                 .then(response => response.json())
                 .then(actualWidgets =>
                     dispatch({
@@ -151,7 +151,7 @@ const dispatchToPropertyManager = (dispatch) => {
 
          deleteWidget : (widgetId) => {
                 //WidgetService.deleteWidget(widgetId)
-                fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/widgets/${widgetId}`, {
+                fetch(`http://localhost:8080/api/widgets/${widgetId}`, {
                     method: "DELETE"
                 }).then(response => response.json())
                     .then(status =>
@@ -161,10 +161,10 @@ const dispatchToPropertyManager = (dispatch) => {
 
         createWidget : (topicId) => {
             //WidgetService.createWidget(topicId, {
-            fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/topics/${topicId}/widgets`, {
+            fetch(`http://localhost:8080/api/topics/${topicId}/widgets`, {
                 method: "POST",
                 body: JSON.stringify({
-                    id: (new Date()).getTime()+"",
+                    // id: (new Date()).getTime()+"",
                     title: "Heading Widget",
                     index: ++counter,
                     type: "HEADING"
@@ -182,10 +182,10 @@ const dispatchToPropertyManager = (dispatch) => {
 
         createWidgetPara : (topicId) => {
             //WidgetService.createWidget(topicId, {
-            fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/topics/${topicId}/widgets`, {
+            fetch(`http://localhost:8080/api/topics/${topicId}/widgets`, {
                 method: "POST",
                 body: JSON.stringify({
-                    id: (new Date()).getTime()+"",
+                    // id: (new Date()).getTime()+"",
                     title: "Paragraph Widget",
                     index: ++counter,
                     type: "PARAGRAPH"

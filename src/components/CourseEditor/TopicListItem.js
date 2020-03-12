@@ -24,16 +24,16 @@ render () {
 
 
             {
-                !this.state.editing && (this.state.selected !== this.state.topic._id) &&
+                !this.state.editing && (this.state.selected !== this.state.topic.id) &&
 
                 <a className="nav-item nav-link shadow rounded-pill">
                             <div className="row" onClick={(e)=> {
                                 this.setState({
-                                    selected : this.state.topic._id
+                                    selected : this.state.topic.id
                                 })
                             }}>
                                 <div className="col-4" >
-                                    <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`}>
+                                    <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`}>
 
                                             {this.state.topic.title}
                                     </Link>
@@ -48,7 +48,7 @@ render () {
                                 <div className="col">
 
                                         <button type="button" className="close wbdv-module-item-delete-btn"
-                                                onClick={() => this.props.deleteTopic(this.state.topic._id)}>
+                                                onClick={() => this.props.deleteTopic(this.state.topic.id)}>
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                 </div>
@@ -59,7 +59,7 @@ render () {
             }
 
     {
-        !this.state.editing && (this.state.selected === this.state.topic._id) &&
+        !this.state.editing && (this.state.selected === this.state.topic.id) &&
 
         <a className="nav-item nav-link shadow bg-success rounded-pill">
             <div className="row" onClick={(e) => {
@@ -68,7 +68,7 @@ render () {
                 })
             }}>
                 <div className="col-4" >
-                    <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`}>
+                    <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`}>
                         {this.state.topic.title}
                     </Link>
                 </div>
@@ -81,7 +81,7 @@ render () {
                 </div>
                 <div className="col">
                     <button type="button" className="close wbdv-module-item-delete-btn"
-                            onClick={() => this.props.deleteTopic(this.state.topic._id)}>
+                            onClick={() => this.props.deleteTopic(this.state.topic.id)}>
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -115,7 +115,7 @@ render () {
                             </div>
                             <div className="col">
                                     <button type="button" style={{border:"none",background:"none"}} onClick={(e) =>{
-                                        this.props.updateTopic(this.state.topic._id, this.state.topic).then(status =>
+                                        this.props.updateTopic(this.state.topic.id, this.state.topic).then(status =>
                                             this.setState({
                                                 editing: false,
                                             }))

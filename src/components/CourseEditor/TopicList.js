@@ -31,7 +31,7 @@ class TopicList extends React.Component {
                                 courseId={this.props.courseId}
                                 moduleId={this.props.moduleId}
                                 lessonId={this.props.lessonId}
-                                key={topic._id}
+                                key={topic.id}
                                 topic={topic}
                                 deleteTopic={this.props.deleteTopic}
                                 updateTopic={this.props.updateTopic}

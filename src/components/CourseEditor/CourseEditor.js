@@ -49,7 +49,8 @@ const   CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, l
                     <TopicList
                         courseId = {courseId}
                         moduleId = {moduleId}
-                        lessonId = {lessonId}/>
+                        lessonId = {lessonId}
+                        topicId = {topicId}/>
                     <WidgetList
                         courseId = {courseId}
                         moduleId = {moduleId}
