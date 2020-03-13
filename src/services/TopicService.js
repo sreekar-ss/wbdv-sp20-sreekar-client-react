@@ -2,7 +2,7 @@
 
 
 export const createTopic = (lessonId, topic) =>
-    fetch(`http://localhost:8080/api/lessons/${lessonId}/topics`, {
+    fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/lessons/${lessonId}/topics`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -13,27 +13,27 @@ export const createTopic = (lessonId, topic) =>
 
 
 export const findTopicsForLesson = (lessonId) =>
-    fetch(`http://localhost:8080/api/lessons/${lessonId}/topics`)
+    fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/lessons/${lessonId}/topics`)
         .then(response => response.json())
 
 export const findAllTopics = () =>
-    fetch("http://localhost:8080/api/topics")
+    fetch("https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/topics")
         .then(response => response.json())
 
 export const deleteTopic = (topicId) =>
-    fetch(`http://localhost:8080/api/topics/${topicId}`, {
+    fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/topics/${topicId}`, {
         method : "DELETE"
     }).then(response => response.json())
 
 export const findTopicById = (topicId) => {
-    return fetch(`http://localhost:8080/api/topics/${topicId}`, {
+    return fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/topics/${topicId}`, {
         method : 'GET'
     }).then(response => response.json())
 }
 
 
 export const updateTopic = async (topicId, topic) => {
-    const response = await fetch(`http://localhost:8080/api/topics/${topicId}`, {
+    const response = await fetch(`https://wbdv-sg20-sreekar-server-java.herokuapp.com/api/topics/${topicId}`, {
         method: 'PUT',
         body: JSON.stringify(topic),
         headers: {
