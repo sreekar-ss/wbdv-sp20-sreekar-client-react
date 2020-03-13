@@ -43,7 +43,7 @@ class ParagraphWidget extends React.Component {
                                     title: newPara
                                 }
                             }))
-                        }}></textarea>
+                        }}/>
 
                         <div style={{paddingTop: "10px"}}>
                             <h4>Preview</h4>

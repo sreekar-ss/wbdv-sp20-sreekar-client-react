@@ -99,6 +99,9 @@ class WidgetList extends React.Component{
                 }}>
                     <option value="HEADING">Heading</option>
                     <option value="PARAGRAPH">Paragraph</option>
+                    <option value="LIST">List</option>
+                    <option value="IMAGE">Image</option>
+
                 </select>
 
                 {
@@ -112,6 +115,22 @@ class WidgetList extends React.Component{
                     this.state.addWidgetType === "PARAGRAPH" &&
                     <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
                        onClick={() => this.props.createWidgetPara(this.props.topicId)}>
+                        <i className="fa fa-plus fa-2x"></i>
+                    </a>
+
+                }
+                {
+                    this.state.addWidgetType === "LIST" &&
+                    <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
+                       onClick={() => this.props.createWidgetList(this.props.topicId)}>
+                        <i className="fa fa-plus fa-2x"></i>
+                    </a>
+
+                }
+                {
+                    this.state.addWidgetType === "IMAGE" &&
+                    <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
+                       onClick={() => this.props.createWidgetImage(this.props.topicId)}>
                         <i className="fa fa-plus fa-2x"></i>
                     </a>
 
@@ -189,6 +208,49 @@ const dispatchToPropertyManager = (dispatch) => {
                     title: "Paragraph Widget",
                     index: ++counter,
                     type: "PARAGRAPH"
+
+                }),
+                headers:{
+                    'content-type': 'application/json'
+                }
+            }).then(response => response.json())
+                .then(actualWidget => {
+                    dispatch(createWidget(actualWidget))
+                })
+            console.log('Reached Here')
+        },
+
+        createWidgetList : (topicId) => {
+            //WidgetService.createWidget(topicId, {
+            fetch(`http://localhost:8080/api/topics/${topicId}/widgets`, {
+                method: "POST",
+                body: JSON.stringify({
+                    // id: (new Date()).getTime()+"",
+                    title: "List Widget",
+                    index: ++counter,
+                    type: "LIST",
+                    listType: "ul"
+
+                }),
+                headers:{
+                    'content-type': 'application/json'
+                }
+            }).then(response => response.json())
+                .then(actualWidget => {
+                    dispatch(createWidget(actualWidget))
+                })
+            console.log('Reached Here')
+        },
+
+        createWidgetImage : (topicId) => {
+            //WidgetService.createWidget(topicId, {
+            fetch(`http://localhost:8080/api/topics/${topicId}/widgets`, {
+                method: "POST",
+                body: JSON.stringify({
+                    // id: (new Date()).getTime()+"",
+                    title: "Image Widget",
+                    index: ++counter,
+                    type: "IMAGE"
 
                 }),
                 headers:{
