@@ -38,5 +38,11 @@ export const positionUp = (widget) => {
 
 export const POSITION_DOWN = "POSITION_DOWN"
 
+export const positionDown = (widget) => {
+    return {
+        type : POSITION_DOWN,
+        widget : widget
+    }
+}
 
 export const FIND_ALL_WIDGETS = "FIND_ALL_WIDGETS"

@@ -51,14 +51,17 @@ const widgetReducer = (state = initialState, action) => {
             let index = state.widgets.indexOf(action.widget);
             state.widgets.move(index, index -1);
             console.log("after sorting", state.widgets)
-            console.log("action widgets", action.widget)
             return {
                 widgets : state.widgets.splice(0)
             }
 
         case POSITION_DOWN:
+            console.log("before sorting", state.widgets)
+            let order = state.widgets.indexOf(action.widget)
+            state.widgets.move(order+1, order)
+            console.log("after sorting", state.widgets)
             return {
-                widgets: action.widgets
+                widgets: state.widgets.splice(0)
             }
 
         default:

@@ -8,7 +8,8 @@ import {
     POSITION_DOWN,
     POSITION_UP,
     updateWidget,
-    positionUp
+    positionUp,
+    positionDown
 } from "../../actions/WidgetActions";
 import TopicService from "../../services/TopicService";
 import {connect} from "react-redux";
@@ -273,12 +274,10 @@ const dispatchToPropertyManager = (dispatch) => {
         },
 
         positionDown : async (topicId, widgetId, widget) => {
-            const responseWidgets = WidgetService.positionDown(topicId, widgetId, widget)
-                .then(responseWidgets =>
-                    dispatch({
-                        type: POSITION_DOWN,
-                        widgets: responseWidgets
-                    }))
+            // const responseWidgets = WidgetService.positionDown(topicId, widgetId, widget)
+            //     .then(responseWidgets =>
+                    dispatch(positionDown(widget))
+        // )
     },
 
 
