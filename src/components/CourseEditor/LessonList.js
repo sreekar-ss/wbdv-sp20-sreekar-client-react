@@ -5,6 +5,7 @@ import '../../../node_modules/font-awesome/css/font-awesome.css';
 import {connect} from "react-redux";
 import {createLesson, deleteLesson, updateLesson, FIND_ALL_LESSONS} from "../../actions/LessonActions";
 import LessonService from "../../services/LessonService";
+import {Link} from "react-router-dom";
 
 
 class LessonList extends React.Component {
@@ -18,6 +19,10 @@ class LessonList extends React.Component {
         if(this.props.moduleId !== prevProps.moduleId) {
             this.props.findLessonsForModule(this.props.moduleId)
         }
+    }
+
+    state = {
+        lesson : {}
     }
 
 
@@ -35,16 +40,20 @@ class LessonList extends React.Component {
             <nav className="nav nav-pills nav-fill">
                 {
                     this.props.lessons && this.props.lessons.map(lesson =>
-                        <LessonListItem
+                        <div key={lesson._id} onClick={() => this.setState({lesson: lesson})} style={{paddingRight: "10px"}}>
+                            <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${lesson._id}`}>
+                                <LessonListItem
+                                    courseId={this.props.courseId}
+                                    moduleId={this.props.moduleId}
 
-                            courseId={this.props.courseId}
-                            moduleId={this.props.moduleId}
-
-                            key={lesson._id}
-                            lesson={lesson}
-                            deleteLesson = {this.props.deleteLesson}
-                            updateLesson = {this.props.updateLesson}
-                        />
+                                    key={lesson._id}
+                                    lesson={lesson}
+                                    deleteLesson = {this.props.deleteLesson}
+                                    updateLesson = {this.props.updateLesson}
+                                    selected = { lesson === this.state.lesson}
+                                />
+                            </Link>
+                        </div>
                     )
                 }
                 <a type="button" style={{float: "right", paddingLeft: "20px"}} onClick={() => this.props.createLesson(this.props.moduleId)}>

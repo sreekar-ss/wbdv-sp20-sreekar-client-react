@@ -30,19 +30,19 @@ class LessonListItem extends React.Component {
 return (
 
     <div>
-        { !this.state.editing && (this.state.selected !== this.state.lesson._id) &&
+        { !this.state.editing && !this.props.selected &&
 
-                // <li className="nav-item shadow list-group-item-action" style={{border : "0.5cm"}}>
-                    <a className="nav-item nav-link shadow rounded-bottom">
+
+                    <a className="nav-item nav-link shadow bg-white rounded">
                         <div className="row" onClick={(e)=> {
                             this.setState({
                                 selected :this.state.lesson._id
                             })
                         }}>
                         <div className="col-6">
-                            <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson._id}`}>
-                                <span>{this.state.lesson.title}</span>
-                            </Link>
+                            {/*<Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson._id}`}>*/}
+                                <h5>{this.state.lesson.title}</h5>
+                            {/*</Link>*/}
                         </div>
                             <div className="col">
                                 <a type="button" style={{margin: "none"}} onClick={() => this.setState({
@@ -62,23 +62,23 @@ return (
 
                         </div>
                     </a>
-                // </li>
+
 
             }
 
-        { !this.state.editing && (this.state.selected === this.state.lesson._id) &&
+        { !this.state.editing && this.props.selected &&
 
-                <li className="nav-item shadow list-group-item-primary" style={{border : "0.5cm"}}>
-                    <a className="nav-link">
+
+                    <a className="nav-item nav-link shadow bg-primary rounded">
                         <div className="row" onClick={(e)=> {
                             this.setState({
                                 selected :''
                             })
                         }}>
                             <div className="col-6">
-                                <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson._id}`}>
-                                    {this.state.lesson.title}
-                                </Link>
+                                {/*<Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson._id}`}>*/}
+                                <h5 style={{color: "white"}}>{this.state.lesson.title}</h5>
+                                {/*</Link>*/}
                             </div>
                             <div className="col">
                                 <a type="button" style={{margin: "none", color: "azure"}} onClick={() => this.setState({
@@ -98,7 +98,7 @@ return (
 
                         </div>
                     </a>
-                </li>
+
 
         }
 

@@ -35,7 +35,7 @@ render () {
                                 <div className="col-4" >
                                     {/*<Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`}>*/}
 
-                                            {this.state.topic.title}
+                                    <h5>{this.state.topic.title}</h5>
                                     {/*</Link>*/}
                                 </div>
                                 <div className="col-2">

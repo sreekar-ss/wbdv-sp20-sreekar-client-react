@@ -31,7 +31,7 @@ class TopicList extends React.Component {
                 <nav className="nav nav-pills nav-fill">
                     {
                         this.props.topics && this.props.topics.map(topic =>
-                            <div key={topic.id} onClick={() => this.setState({topic: topic})}>
+                            <div key={topic.id} onClick={() => this.setState({topic: topic})} style={{paddingRight: "10px"}}>
                                 <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${topic.id}`}>
                                     <TopicListItem
 

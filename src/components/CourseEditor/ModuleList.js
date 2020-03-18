@@ -9,6 +9,7 @@ import LessonList from "./LessonList";
 import {createStore} from "redux";
 
 import lessonReducer from "../../reducers/LessonReducer";
+import {Link} from "react-router-dom";
 
 
 class ModuleList extends React.Component  {
@@ -23,6 +24,10 @@ class ModuleList extends React.Component  {
         this.setState({
             modules: modules
         })
+     }
+
+     state = {
+        module : {}
      }
 
      // componentDidUpdate(prevProps, prevState, snapshot) {
@@ -50,14 +55,19 @@ class ModuleList extends React.Component  {
                                 <ul  className="list-group">
                                      {
                                           this.props.modules && this.props.modules.map(module =>
-                                              <ModuleListItem
-                                                  key = {module._id}
-                                                  courseId={this.props.courseId}
-                                                  moduleId={this.props.moduleId}
-                                                  module={module}
-                                                  deleteModule={this.props.deleteModule}
-                                                  updateModule={this.props.updateModule}
-                                              />
+                                              <div key={module._id} onClick={() => this.setState({module: module})}>
+                                                  <Link to={`/course-editor/${this.props.courseId}/module/${module._id}`}>
+                                                      <ModuleListItem
+                                                          key = {module._id}
+                                                          courseId={this.props.courseId}
+                                                          moduleId={this.props.moduleId}
+                                                          module={module}
+                                                          deleteModule={this.props.deleteModule}
+                                                          updateModule={this.props.updateModule}
+                                                          selected = { module === this.state.module}
+                                                      />
+                                                  </Link>
+                                              </div>
                                           )
                                      }
                                 </ul>
