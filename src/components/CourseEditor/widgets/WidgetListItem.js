@@ -23,6 +23,8 @@ class WidgetListItem extends React.Component{
                         positionDown = {this.props.positionDown}
                         topicId = {this.props.topicId}
                         counter ={this.props.counter}
+                        first = {this.props.first}
+                        last = {this.props.last}
                     />
                 }
                 {
@@ -35,6 +37,8 @@ class WidgetListItem extends React.Component{
                         positionUp = {this.props.positionUp}
                         positionDown = {this.props.positionDown}
                         topicId = {this.props.topicId}
+                        first = {this.props.first}
+                        last = {this.props.last}
                     />
                 }
                 {
@@ -47,6 +51,8 @@ class WidgetListItem extends React.Component{
                         positionUp = {this.props.positionUp}
                         positionDown = {this.props.positionDown}
                         topicId = {this.props.topicId}
+                        first = {this.props.first}
+                        last = {this.props.last}
                     />
                 }
                 {
@@ -59,6 +65,8 @@ class WidgetListItem extends React.Component{
                         positionUp = {this.props.positionUp}
                         positionDown = {this.props.positionDown}
                         topicId = {this.props.topicId}
+                        first = {this.props.first}
+                        last = {this.props.last}
                     />
                 }
                 {

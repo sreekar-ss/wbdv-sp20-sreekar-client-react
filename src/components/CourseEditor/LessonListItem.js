@@ -105,7 +105,7 @@ return (
         { this.state.editing &&
 
         <li className="nav-item bg-light shadow">
-            <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}`}>
+            {/*<Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}`}>*/}
                 <a className="nav-link active">
                 <div className="row">
                         <div className="col-8">
@@ -134,7 +134,7 @@ return (
 
                 </div>
                 </a>
-            </Link>
+            {/*</Link>*/}
         </li>
 
         }

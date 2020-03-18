@@ -29,6 +29,13 @@ export const updateWidget = (updatedWidget) => (
 
 export const POSITION_UP = "POSITION_UP"
 
+export const positionUp = (widget) => {
+    return {
+        type: POSITION_UP,
+        widget: widget
+    }
+}
+
 export const POSITION_DOWN = "POSITION_DOWN"
 
 

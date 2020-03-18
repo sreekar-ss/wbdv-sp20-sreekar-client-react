@@ -7,7 +7,8 @@ import {
     FIND_ALL_WIDGETS,
     POSITION_DOWN,
     POSITION_UP,
-    updateWidget
+    updateWidget,
+    positionUp
 } from "../../actions/WidgetActions";
 import TopicService from "../../services/TopicService";
 import {connect} from "react-redux";
@@ -74,6 +75,8 @@ class WidgetList extends React.Component{
                             positionDown={this.props.positionDown}
                             topicId={this.props.topicId}
                             counter={counter}
+                            first = {this.props.widgets.indexOf(widget) === 0}
+                            last = {this.props.widgets.indexOf(widget) === this.props.widgets.length-1}
                         />
                         </div>
                         <div className="col-2" style={{paddingTop: "1cm"}}>
@@ -251,7 +254,6 @@ const dispatchToPropertyManager = (dispatch) => {
                     title: "Image Widget",
                     index: ++counter,
                     type: "IMAGE"
-
                 }),
                 headers:{
                     'content-type': 'application/json'
@@ -264,12 +266,10 @@ const dispatchToPropertyManager = (dispatch) => {
         },
 
         positionUp : async (topicId, widgetId, widget) => {
-            const responseWidgets = WidgetService.positionUp(topicId, widgetId, widget)
-                .then(responseWidgets =>
-                    dispatch({
-                        type: POSITION_UP,
-                        widgets: responseWidgets
-                    }))
+            // const responseWidgets = WidgetService.positionUp(topicId, widgetId, widget)
+            //     .then(responseWidgets =>
+                    dispatch(positionUp(widget))
+        //)
         },
 
         positionDown : async (topicId, widgetId, widget) => {

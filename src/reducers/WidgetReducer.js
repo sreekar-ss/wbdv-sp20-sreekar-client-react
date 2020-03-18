@@ -14,6 +14,10 @@ const initialState = {
     widgets : []
 }
 
+Array.prototype.move = function (from, to) {
+    this.splice(to, 0, this.splice(from, 1)[0])
+}
+
 const widgetReducer = (state = initialState, action) => {
 
     switch (action.type) {
@@ -42,9 +46,14 @@ const widgetReducer = (state = initialState, action) => {
             }
 
         case POSITION_UP:
-            console.log("In reducer ");
+            console.log("In reducer moving Up");
+            console.log("before sorting", state.widgets)
+            let index = state.widgets.indexOf(action.widget);
+            state.widgets.move(index, index -1);
+            console.log("after sorting", state.widgets)
+            console.log("action widgets", action.widget)
             return {
-                widgets: action.widgets
+                widgets : state.widgets.splice(0)
             }
 
         case POSITION_DOWN:

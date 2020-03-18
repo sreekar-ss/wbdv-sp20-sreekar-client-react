@@ -26,7 +26,7 @@ render () {
             {
                 !this.state.editing && !this.props.editing &&
 
-                <a className="nav-item nav-link shadow bg-white rounded-pill">
+                <div className="nav-item nav-link shadow bg-white rounded-pill">
                             <div className="row" onClick={(e)=> {
                                 this.setState({
                                     selected : this.state.topic.id
@@ -39,11 +39,11 @@ render () {
                                     {/*</Link>*/}
                                 </div>
                                 <div className="col-2">
-                                        <a type="button" style={{margin: "none"}} onClick={() => this.setState({
+                                        <div type="button" style={{margin: "none"}} onClick={() => this.setState({
                                                 editing : true
                                             })}>
                                             <i className="fa fa-pencil-square fa-2x"></i>
-                                        </a>
+                                        </div>
                                 </div>
                                 <div className="col">
 
@@ -54,14 +54,14 @@ render () {
                                 </div>
 
                             </div>
-                </a>
+                </div>
 
             }
 
     {
         !this.state.editing && this.props.editing &&
 
-        <a className="nav-item nav-link shadow bg-primary rounded-pill">
+        <div className="nav-item nav-link shadow bg-primary rounded-pill">
             <div className="row" onClick={(e) => {
                 this.setState({
                     selected : ''
@@ -87,7 +87,7 @@ render () {
                 </div>
 
             </div>
-        </a>
+        </div>
 
     }
 
