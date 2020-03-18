@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import TopicService from "../../services/TopicService";
 import {createTopic, deleteTopic,updateTopic, FIND_ALL_TOPICS} from "../../actions/TopicActions";
 import TopicListItem from "./TopicListItem";
+import {Link} from "react-router-dom";
 
 
 class TopicList extends React.Component {
@@ -19,23 +20,32 @@ class TopicList extends React.Component {
         }
     }
 
+    state ={
+        topic : {}
+    }
+
     render() {
 
         return (
-            <div>
-                <nav className="nav nav-pills">
+            <div style={{paddingLeft : "10px"}}>
+                <nav className="nav nav-pills nav-fill">
                     {
                         this.props.topics && this.props.topics.map(topic =>
-                            <TopicListItem
+                            <div key={topic.id} onClick={() => this.setState({topic: topic})}>
+                                <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${topic.id}`}>
+                                    <TopicListItem
 
-                                courseId={this.props.courseId}
-                                moduleId={this.props.moduleId}
-                                lessonId={this.props.lessonId}
-                                key={topic.id}
-                                topic={topic}
-                                deleteTopic={this.props.deleteTopic}
-                                updateTopic={this.props.updateTopic}
-                            />
+                                        courseId={this.props.courseId}
+                                        moduleId={this.props.moduleId}
+                                        lessonId={this.props.lessonId}
+                                        key={topic.id}
+                                        topic={topic}
+                                        deleteTopic={this.props.deleteTopic}
+                                        updateTopic={this.props.updateTopic}
+                                        editing = {topic === this.state.topic}
+                                    />
+                                </Link>
+                        </div>
                         )
                     }
                     <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}} onClick={() => this.props.createTopic(this.props.lessonId)}>

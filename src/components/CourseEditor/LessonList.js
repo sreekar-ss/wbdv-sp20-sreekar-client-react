@@ -31,8 +31,8 @@ class LessonList extends React.Component {
     render () {
 
         return(
-            <div className="container-fluid" style={{paddingTop : "0.5cm"}}>
-            <ul className="nav nav-tabs">
+            <div className="container-fluid">
+            <nav className="nav nav-pills nav-fill">
                 {
                     this.props.lessons && this.props.lessons.map(lesson =>
                         <LessonListItem
@@ -50,7 +50,8 @@ class LessonList extends React.Component {
                 <a type="button" style={{float: "right", paddingLeft: "20px"}} onClick={() => this.props.createLesson(this.props.moduleId)}>
                     <i className="fa fa-plus fa-2x"></i>
                 </a>
-            </ul>
+            </nav>
+                <hr/>
             </div>
         )
 

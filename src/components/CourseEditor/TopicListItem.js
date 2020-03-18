@@ -20,23 +20,23 @@ class TopicListItem extends React.Component {
 render () {
     return (
 
-<div style={{paddingTop: "10px"}}>
+<div style={{paddingTop: "5px"}}>
 
 
             {
-                !this.state.editing && (this.state.selected !== this.state.topic.id) &&
+                !this.state.editing && !this.props.editing &&
 
-                <a className="nav-item nav-link shadow rounded-pill">
+                <a className="nav-item nav-link shadow bg-white rounded-pill">
                             <div className="row" onClick={(e)=> {
                                 this.setState({
                                     selected : this.state.topic.id
                                 })
                             }}>
                                 <div className="col-4" >
-                                    <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`}>
+                                    {/*<Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`}>*/}
 
                                             {this.state.topic.title}
-                                    </Link>
+                                    {/*</Link>*/}
                                 </div>
                                 <div className="col-2">
                                         <a type="button" style={{margin: "none"}} onClick={() => this.setState({
@@ -59,21 +59,21 @@ render () {
             }
 
     {
-        !this.state.editing && (this.state.selected === this.state.topic.id) &&
+        !this.state.editing && this.props.editing &&
 
-        <a className="nav-item nav-link shadow bg-success rounded-pill">
+        <a className="nav-item nav-link shadow bg-primary rounded-pill">
             <div className="row" onClick={(e) => {
                 this.setState({
                     selected : ''
                 })
             }}>
-                <div className="col-4" >
-                    <Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`}>
-                        {this.state.topic.title}
-                    </Link>
+                <div className="col-4">
+                    {/*<Link to={`/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`}>*/}
+                    <h5 style={{color: "white"}}>{this.state.topic.title}</h5>
+                    {/*</Link>*/}
                 </div>
                 <div className="col">
-                    <a type="button" style={{margin: "none"}} onClick={() => this.setState({
+                    <a type="button" style={{margin: "none", color: "azure"}} onClick={() => this.setState({
                         editing : true
                     })}>
                         <i className="fa fa-pencil-square fa-2x"></i>

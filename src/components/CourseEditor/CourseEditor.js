@@ -35,14 +35,14 @@ const   CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, l
 
             <CourseEditorHeader hideCourseEditor={hideCourseEditor} match={match} courseId={courseId}
                                 history={history}/>
-<div className="row">
-        <div className="col-4">
+<div className="row" style={{background: "Gainsboro", position: "absolute",height: "100%", width: "100%"}}>
+        <div className="col-4" style={{background: "LightGrey"}}>
                     <ModuleList
                         courseId = {courseId}
                         //courseId={courseId}
                     />
         </div>
-        <div className="col-8 container-fluid" style={{paddingTop:"2cm"}}>
+        <div className="col-8 container-fluid" style={{paddingTop:"60px"}}>
                     <LessonList
                         courseId = {courseId}
                         moduleId = {moduleId}/>

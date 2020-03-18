@@ -32,8 +32,8 @@ return (
     <div>
         { !this.state.editing && (this.state.selected !== this.state.lesson._id) &&
 
-                <li className="nav-item shadow list-group-item-action" style={{border : "0.5cm"}}>
-                    <a className="nav-link">
+                // <li className="nav-item shadow list-group-item-action" style={{border : "0.5cm"}}>
+                    <a className="nav-item nav-link shadow rounded-bottom">
                         <div className="row" onClick={(e)=> {
                             this.setState({
                                 selected :this.state.lesson._id
@@ -62,7 +62,7 @@ return (
 
                         </div>
                     </a>
-                </li>
+                // </li>
 
             }
 
