@@ -20,6 +20,7 @@ class ParagraphWidget extends React.Component {
                                 <h2>Paragraph Widget</h2>
                             </div>
                             <div className="col" style={{float:"right"}}>
+                                <div className="row">
                                 { !this.props.first &&
                                 <button className="btn btn-primary" style={{margin:"10px"}} onClick={() => this.props.positionUp(this.props.topicId, this.props.widget.id, this.props.widget, this.props.state)}>
                                     <i className="fa fa-arrow-circle-up fa-2x"></i>
@@ -31,9 +32,24 @@ class ParagraphWidget extends React.Component {
                                 <button className="btn btn-success" style={{margin:"10px"}} onClick={() => this.props.save(this.state.widget.id, this.state.widget)}>
                                     <i className="fa fa-check-circle fa-2x"></i>
                                 </button>
+                                <select className="form-control col-3" style={{}} onChange={(e)=> {
+                                    let newType = e.target.value
+                                    this.setState(prevState => ({
+                                        widget : {
+                                            ...prevState.widget,
+                                            type : newType
+                                        }
+                                    }))
+                                }} value={this.state.widget.type}>
+                                        <option value="HEADING">Heading</option>
+                                        <option value="PARAGRAPH">Paragraph</option>
+                                        <option value="LIST">List</option>
+                                        <option value="IMAGE">Image</option>
+                                    </select>
                                 <button className="btn btn-danger" style={{margin:"10px"}} onClick={() => this.props.notEditing()}>
                                     Cancel
                                 </button>
+                                    </div>
                             </div>
                      </span>
 
