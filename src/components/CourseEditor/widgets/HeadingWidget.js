@@ -22,11 +22,11 @@ state = {
                             <div className="col" style={{float:"right"}}>
                                 {/*{ (this.props.widget.index !== 0) &&*/}
                                 { !this.props.first &&
-                                <button className="btn btn-primary" style={{margin:"10px"}} onClick={() => this.props.positionUp(this.props.topicId, this.props.widget.id, this.props.widget)}>
+                                <button className="btn btn-primary" style={{margin:"10px"}} onClick={() => this.props.positionUp(this.props.topicId, this.props.widget.id, this.props.widget, this.props.state)}>
                                     <i className="fa fa-arrow-circle-up fa-2x"></i>
                                 </button>}
                                 { !this.props.last &&
-                                <button className="btn btn-primary" style={{margin:"10px"}} onClick={() => this.props.positionDown(this.props.topicId, this.props.widget.id, this.props.widget)}>
+                                <button className="btn btn-primary" style={{margin:"10px"}} onClick={() => this.props.positionDown(this.props.topicId, this.props.widget.id, this.props.widget, this.props.state)}>
                                     <i className="fa fa-arrow-circle-down fa-2x"></i>
                                 </button>}
                                 <button className="btn btn-success" style={{margin:"10px"}} onClick={() => this.props.save(this.state.widget.id, this.state.widget)}>

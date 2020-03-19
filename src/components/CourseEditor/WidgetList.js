@@ -78,6 +78,7 @@ class WidgetList extends React.Component{
                             counter={counter}
                             first = {this.props.widgets.indexOf(widget) === 0}
                             last = {this.props.widgets.indexOf(widget) === this.props.widgets.length-1}
+                            state = {this.props}
                         />
                         </div>
                         <div className="col-2" style={{paddingTop: "1cm"}}>
@@ -266,20 +267,23 @@ const dispatchToPropertyManager = (dispatch) => {
             console.log('Reached Here')
         },
 
-        positionUp : async (topicId, widgetId, widget) => {
-            // const responseWidgets = WidgetService.positionUp(topicId, widgetId, widget)
-            //     .then(responseWidgets =>
-                    dispatch(positionUp(widget))
-        //)
+        positionUp : async (topicId, widgetId, widget, state) => {
+            let temp;
+            temp = dispatch(positionUp(widget))
+                    console.log("In Widget List->", temp)
+                    console.log("state after change ->", state.widgets)
+            for( let i= 0; i < state.widgets.length; i++){
+                await WidgetService.updateWidget(state.widgets[i].id, state.widgets[i])
+            }
         },
 
-        positionDown : async (topicId, widgetId, widget) => {
-            // const responseWidgets = WidgetService.positionDown(topicId, widgetId, widget)
-            //     .then(responseWidgets =>
+        positionDown : async (topicId, widgetId, widget, state) => {
                     dispatch(positionDown(widget))
-        // )
+                    console.log("In Widget List->", state.widgets)
+            for( let i= 0; i < state.widgets.length; i++){
+                await WidgetService.updateWidget(state.widgets[i].id, state.widgets[i])
+            }
     },
-
 
         updateWidget: async (widgetId, widget) => {
             const updatedWidget = WidgetService.updateWidget(widgetId, widget)
