@@ -95,52 +95,54 @@ class WidgetList extends React.Component{
                     )
                 }
             </span>
-            <div className="col-4 align-self-center" style={{paddingTop: "1cm"}}>
-                <select className="form-control" onChange={(e)=> {
-                    const widgetType = e.target.value
-                    this.setState({
-                        addWidgetType: widgetType
-                    })
-                }}>
-                    <option value="HEADING">Heading</option>
-                    <option value="PARAGRAPH">Paragraph</option>
-                    <option value="LIST">List</option>
-                    <option value="IMAGE">Image</option>
+                { this.props.topicId &&
+                <div className="col-4 align-self-center" style={{paddingTop: "1cm"}}>
+                    <select className="form-control" onChange={(e)=> {
+                        const widgetType = e.target.value
+                        this.setState({
+                            addWidgetType: widgetType
+                        })
+                    }}>
+                        <option value="HEADING">Heading</option>
+                        <option value="PARAGRAPH">Paragraph</option>
+                        <option value="LIST">List</option>
+                        <option value="IMAGE">Image</option>
 
-                </select>
+                    </select>
 
-                {
-                    this.state.addWidgetType === "HEADING" &&
-                    <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
-                       onClick={() => this.props.createWidget(this.props.topicId)}>
-                        <i className="fa fa-plus fa-2x"></i>
-                    </a>
+                    {
+                        this.state.addWidgetType === "HEADING" &&
+                        <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
+                           onClick={() => this.props.createWidget(this.props.topicId)}>
+                            <i className="fa fa-plus fa-2x"></i>
+                        </a>
+                    }
+                    {
+                        this.state.addWidgetType === "PARAGRAPH" &&
+                        <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
+                           onClick={() => this.props.createWidgetPara(this.props.topicId)}>
+                            <i className="fa fa-plus fa-2x"></i>
+                        </a>
+
+                    }
+                    {
+                        this.state.addWidgetType === "LIST" &&
+                        <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
+                           onClick={() => this.props.createWidgetList(this.props.topicId)}>
+                            <i className="fa fa-plus fa-2x"></i>
+                        </a>
+
+                    }
+                    {
+                        this.state.addWidgetType === "IMAGE" &&
+                        <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
+                           onClick={() => this.props.createWidgetImage(this.props.topicId)}>
+                            <i className="fa fa-plus fa-2x"></i>
+                        </a>
+
+                    }
+                </div>
                 }
-                {
-                    this.state.addWidgetType === "PARAGRAPH" &&
-                    <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
-                       onClick={() => this.props.createWidgetPara(this.props.topicId)}>
-                        <i className="fa fa-plus fa-2x"></i>
-                    </a>
-
-                }
-                {
-                    this.state.addWidgetType === "LIST" &&
-                    <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
-                       onClick={() => this.props.createWidgetList(this.props.topicId)}>
-                        <i className="fa fa-plus fa-2x"></i>
-                    </a>
-
-                }
-                {
-                    this.state.addWidgetType === "IMAGE" &&
-                    <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}}
-                       onClick={() => this.props.createWidgetImage(this.props.topicId)}>
-                        <i className="fa fa-plus fa-2x"></i>
-                    </a>
-
-                }
-            </div>
 
             </div>
 

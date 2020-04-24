@@ -12,7 +12,7 @@ class CourseManagerContainer extends React.Component{
         layout: 'table',
         editingCourse: false,
         newCourseTitle: 'Add Course Title',
-        courses: []
+        courses: [],
     }
 
     componentDidMount = async () => {
@@ -21,6 +21,8 @@ class CourseManagerContainer extends React.Component{
         this.setState({
             courses: allCourses
         })
+
+
 
         // findAllCourses()
         //     .then(courses => this.setState({

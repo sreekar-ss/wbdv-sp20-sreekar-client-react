@@ -56,9 +56,11 @@ class LessonList extends React.Component {
                         </div>
                     )
                 }
-                <a type="button" style={{float: "right", paddingLeft: "20px"}} onClick={() => this.props.createLesson(this.props.moduleId)}>
-                    <i className="fa fa-plus fa-2x"></i>
-                </a>
+                {   this.props.moduleId &&
+                    <a type="button" style={{float: "right", paddingLeft: "20px", paddingTop: "20px"}} onClick={() => this.props.createLesson(this.props.moduleId)}>
+                        <i className="fa fa-plus fa-2x"></i>
+                    </a>
+                }
             </nav>
                 <hr/>
             </div>
